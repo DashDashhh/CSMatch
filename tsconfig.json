@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(site)/components/signupHeader", "app/pages/postHandler/posts.js", "app/api/pushCardData/route.ts", "app/api/profile/route.js", "app/api/register/route.js", "app/api/bio/route.js"],
   "exclude": ["node_modules"]
 }
