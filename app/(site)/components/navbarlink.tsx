@@ -54,7 +54,7 @@ const NBLink = (props: {
     
         window.addEventListener('scroll', highlightMenu);
     
-      }, []); // Empty dependency array ensures that the effect runs only once on mount
+      }, [highlightMenu]); // Empty dependency array ensures that the effect runs only once on mount
     
     return (
         <div className={linkStyle}>

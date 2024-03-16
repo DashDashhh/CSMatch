@@ -51,7 +51,7 @@ const Home = () => {
                 <div className="main__content">
                     <h1>Get Involved</h1>
                     <h2>Sign Up Today!</h2>
-                    <p>You can create a listing for yourself as an intern today. Allow businesses to contact you through this website and you'll be on your way to a career in computer science!</p>
+                    <p>You can create a listing for yourself as an intern today. Allow businesses to contact you through this website and you&aposll be on your way to a career in computer science!</p>
                     <button className="main__btn"><a href="/pages/signup">Sign Up</a></button>
                 </div>
                 <div className="main__img--container">

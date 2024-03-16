@@ -132,7 +132,7 @@ const InternBio = () => {
         })
 
 
-    }, [internName, grade, experience, emailValue, phoneNumber, socials])
+    }, [internName, grade, experience, emailValue, phoneNumber, socials, bioData])
     
     return (
         <div>
