@@ -5,8 +5,6 @@ import { getCurrentUser } from '@/app/libs/session';
 
 import prisma from "@/app/libs/prismadb";
 
-import {redirect} from 'next/navigation'
-
 // Send Card Data to mongo
 
 

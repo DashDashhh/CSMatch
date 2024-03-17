@@ -12,7 +12,88 @@ import { useState, useEffect } from 'react';
 
 import { useRouter } from 'next/navigation';
 
+// API IMPORTS
 
+import {MongoClient} from 'mongodb';
+import {NextResponse} from "next/server";
+
+import { getCurrentUser } from '@/app/libs/session';
+
+import prisma from "@/app/libs/prismadb";
+
+
+// Send Card Data to mongo
+
+
+async function POST(request: any) {
+
+    let body = await request.json();
+    const user = await getCurrentUser();
+    
+    const data = await prisma.user.findUnique({
+      where: {
+          email: user!.email!
+      }
+  });
+  
+    const dataId = data!.id
+  
+    const hasCard = data!.hasCard
+  
+    // Replace the uri string with your connection string.
+    const uri = "mongodb+srv://rgdewitty:rgdewitty@cluster0.vahi5yr.mongodb.net/test";
+  
+    const client = new MongoClient(uri);
+  
+  
+    try {
+      const database = client.db('test');
+      const cardInfo = database.collection('UserCardInfo');
+      const userData = database.collection('User')
+  
+      if (!hasCard) {
+        const card = await cardInfo.insertOne({
+          internName: body.internName,
+          grade: body.grade,
+          email: body.email,
+          userId: data!.id
+        });
+  
+        const userUpdate = await userData.updateOne(
+          {email: data!.email},
+          {$set: {
+            hasCard: true
+          }}
+        )
+        console.log('card created')
+        return JSON.stringify(card)
+  
+    
+      } else if (hasCard) {
+        const card = await cardInfo.updateOne(
+          {userId: data!.id},
+          {$set: {
+            internName: body.internName,
+            grade: body.grade,
+            email: body.email
+          }}
+        )
+  
+        console.log('updating card')
+        return JSON.stringify(card)
+
+  
+        }
+  
+  
+    } catch(error) {
+      console.log(error)
+      return new NextResponse('error')
+    } finally {
+      // Ensures that the client will close when you finish/error
+      await client.close();
+    }
+  }
 
 const InternBio = () => {
 
@@ -55,22 +136,22 @@ const InternBio = () => {
         setSocials(event.target.value);
     };
 
-    const pushCardData = async(e: any) => {
-        console.log(bioData)
+    const pushCardData = async(e: any, bioData: any) => {
         e.preventDefault();
 
         try {
-            await fetch(`${process.env.VERCEL_URL}/api/pushCardData`,{
-                method: "POST",
-                headers:{
-                    "Content-Type":"application/json"
-                },
-                body:JSON.stringify({
-                    internName: bioData.internName,
-                    grade: bioData.grade,
-                    email: bioData.email
-            })
-            });
+            // await fetch(`${process.env.VERCEL_URL}/api/pushCardData`,{
+            //     method: "POST",
+            //     headers:{
+            //         "Content-Type":"application/json"
+            //     },
+            //     body:JSON.stringify({
+            //         internName: bioData.internName,
+            //         grade: bioData.grade,
+            //         email: bioData.email
+            // })
+            // });
+            POST(bioData)
             console.log('Success')
         } catch(err) {
             console.log(err)
@@ -101,14 +182,13 @@ const InternBio = () => {
         } catch(err) {
             console.log(err)
         }
-        // Push Card Data AFTER pushing bio data
 
     }
 
     const onSubmit = async(e: any) => {
         try {
             pushBioData(e)
-            pushCardData(e)
+            pushCardData(e, bioData)
             .then(() => {router.push('/pages/internlist')})
 
         } catch(error) {
