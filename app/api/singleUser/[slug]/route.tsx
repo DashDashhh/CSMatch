@@ -11,20 +11,21 @@ export async function GET(request: any) {
     const url = new URL(request.url)
     const searchparams = new URLSearchParams(url.searchParams)
     const id = searchparams.get('id')
+
     
 
     try {
         const singleUser = await prisma.userBioInfo.findUnique({
             where: {
                 // returns an error but should be fine...
-                userId: id
+                userId: id!
             }
         });
         console.log(`singleUser: ${JSON.stringify(singleUser)}`)
         // return NextResponse.json(singleUser)
         return NextResponse.json(singleUser)
     } catch(error) {
-        return new NextResponse(error)
+        return new NextResponse('error')
     }
 
 }
