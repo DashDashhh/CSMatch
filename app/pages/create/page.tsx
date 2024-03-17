@@ -12,7 +12,6 @@ import { useState, useEffect } from 'react';
 
 import { useRouter } from 'next/navigation';
 
-import Router from "next/router"
 import toast from 'react-hot-toast';
 
 import { redirect } from 'next/navigation'
@@ -215,9 +214,9 @@ const InternBio = () => {
             .then(() => {
                 console.log('pushing to /pages/internlist')
                 toast.success('Success!')
-                Router.push('/')
-                // router.refresh()
-                // router.push('/')
+                router.push('/')
+                router.refresh()
+
             })
         } catch(error) {
             console.log(error)
