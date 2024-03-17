@@ -194,8 +194,8 @@ const InternBio = () => {
 
     const onSubmit = async(e: any) => {
         try {
-            pushBioData(e)
-            pushCardData(e)
+            await pushBioData(e)
+            await pushCardData(e)
             router.push('/pages/internlist')
 
         } catch(error) {
