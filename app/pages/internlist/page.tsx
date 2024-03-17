@@ -16,7 +16,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function GET() {
+async function GET() {
     try {
         const cards = await prisma.userCardInfo.findMany();
         return new NextResponse(JSON.stringify(cards))
