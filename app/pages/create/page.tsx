@@ -136,11 +136,13 @@ const InternBio = () => {
         setSocials(event.target.value);
     };
 
-    const pushCardData = async(e: any, bioData: any) => {
+    const pushCardData = async(e: any) => {
         e.preventDefault();
 
+        console.log(bioData)
+
         try {
-            await fetch(`/api/pushCardData`,{
+            const response = await fetch(`/api/pushCardData`,{
                 method: "POST",
                 headers:{
                     "Content-Type":"application/json"
@@ -151,8 +153,13 @@ const InternBio = () => {
                     email: bioData.email
             })
             });
+            if (response.ok) {
+                console.log('Card Data successfully pushed')
+
+            } else {
+                console.log("PushCardData: Error")
+            }
             // POST(bioData)
-            console.log('Success')
         } catch(err) {
             console.log(err)
         }
@@ -177,7 +184,7 @@ const InternBio = () => {
 
             }
             else {
-                console.log("Error")
+                console.log("PushBioData: Error")
             }
         } catch(err) {
             console.log(err)
@@ -188,7 +195,7 @@ const InternBio = () => {
     const onSubmit = async(e: any) => {
         try {
             pushBioData(e)
-            pushCardData(e, bioData)
+            pushCardData(e)
             .then(() => {router.push('/pages/internlist')})
 
         } catch(error) {
