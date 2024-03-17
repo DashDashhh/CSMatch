@@ -70,8 +70,8 @@ function SignupContainer() {
         handleUserVisibility()
         if (registerStatus === 'Register') {
             setIsLoading(true);
-            // Create model
             try {
+                console.log(regData)
                 const response = await fetch(`/api/register`,{
                     method: "POST",
                     headers:{
@@ -81,8 +81,6 @@ function SignupContainer() {
                 });
                 signIn('credentials', regData)
 
-                
-                // .finally(() => setIsLoading(false))
                 setIsLoading(false)
                 toast.success('Registering you');
 
