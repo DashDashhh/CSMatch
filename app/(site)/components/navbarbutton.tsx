@@ -24,7 +24,7 @@ const NBButton = (props: {
     useEffect(() => {
         checkVisibility()
     
-      }, [checkVisibility]); // Empty dependency array ensures that the effect runs only once on mount
+      }, []); // Empty dependency array ensures that the effect runs only once on mount
 
     return (
         
