@@ -60,7 +60,7 @@ const InternBio = () => {
         e.preventDefault();
 
         try {
-            await fetch('/api/pushCardData',{
+            await fetch(`${process.env.ROOT_VAR}/api/pushCardData`,{
                 method: "POST",
                 headers:{
                     "Content-Type":"application/json"

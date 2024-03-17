@@ -14,7 +14,7 @@ async function getData(request: string) {
     const query = encodeURI(`?id=${request}`)
     try {
         // Make sure to use cache no store!
-        const response = await fetch(`http://localhost:3000/api/singleUser/slug${query}`, {cache: "no-store"});
+        const response = await fetch(`${process.env.ROOT_VAR}/api/singleUser/slug${query}`, {cache: "no-store"});
         const res = await response.json()
         return (res)
 

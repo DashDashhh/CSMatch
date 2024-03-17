@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 
 
 async function getData() {
-    const res = await fetch("http://localhost:3000/api/cards", {cache: "no-store"});
+    const res = await fetch(`${process.env.ROOT_VAR}/api/cards`, {cache: "no-store"});
     if(!res.ok) console.log('error');
     return res.json();
 }
