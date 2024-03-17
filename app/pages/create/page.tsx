@@ -196,7 +196,7 @@ const InternBio = () => {
         try {
             pushBioData(e)
             pushCardData(e)
-            .then(() => {router.push('/pages/internlist')})
+            router.push('/pages/internlist')
 
         } catch(error) {
             console.log(error)
