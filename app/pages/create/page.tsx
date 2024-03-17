@@ -155,13 +155,16 @@ const InternBio = () => {
             });
             if (response.ok) {
                 console.log('Card Data successfully pushed')
+                return (true)
 
             } else {
                 console.log("PushCardData: Error")
+                return (false)
             }
             // POST(bioData)
         } catch(err) {
             console.log(err)
+            return (false)
         }
 
     }
@@ -181,22 +184,30 @@ const InternBio = () => {
             });
             if (response.ok) {
                 console.log('Bio Data successfully pushed')
+                return(true)
 
             }
             else {
                 console.log("PushBioData: Error")
+                return(false)
             }
         } catch(err) {
             console.log(err)
+            return(false)
         }
 
     }
 
     const onSubmit = async(e: any) => {
         try {
-            await pushBioData(e)
-            await pushCardData(e)
-            router.push('/pages/internlist')
+            const pushBD = await pushBioData(e)
+            const pushCD = await pushCardData(e)
+
+            if (pushBD&&pushCD) {
+                console.log('pushing to /pages/internlist')
+                router.push('/pages/internlist')
+
+            }
 
         } catch(error) {
             console.log(error)

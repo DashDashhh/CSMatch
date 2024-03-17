@@ -1,11 +1,14 @@
-'use client'
-
 import './internsearch.css';
 import Navbar from "@/app/(site)/components/navbar";
 import InternCard from "@/app/(site)/components/interncard";
 
-import { useRouter } from 'next/navigation'
-import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
+// async function getData() {
+//     const res = await fetch("http://localhost:3000/api/cards", {cache: "no-store"});
+//     if(!res.ok) console.log('error');
+//     return res.json();
+// }
 
 // API GET DATA FROM MONGO
 
@@ -27,16 +30,12 @@ async function GET() {
 }
 
 
-
-
 async function getData() {
     const res = await GET()
     return res.json();
 }
 
 const internList = async() => {
-
-    // ref()
 
     const data = await getData();
 
