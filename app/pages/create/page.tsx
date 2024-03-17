@@ -11,6 +11,8 @@ import Navbar from "@/app/(site)/components/navbar";
 import { useState, useEffect } from 'react';
 
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
+
 
 // API IMPORTS
 
@@ -202,16 +204,13 @@ const InternBio = () => {
 
     const onSubmit = async(e: any) => {
         try {
-            const pushBD = await pushBioData(e)
-            const pushCD = await pushCardData(e)
-
-            if (pushBD&&pushCD) {
+            pushBioData(e)
+            pushCardData(e)
+            .then(() => {
                 console.log('pushing to /pages/internlist')
-                router.refresh()
+                toast.success('Success!')
                 router.push('/pages/internlist')
-
-            }
-
+            })
         } catch(error) {
             console.log(error)
         }
