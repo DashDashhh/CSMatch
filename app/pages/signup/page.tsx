@@ -80,8 +80,6 @@ function SignupContainer() {
                     },
                     body:JSON.stringify(regData)
                 });
-                // const res = await axios.post(`cs-match-7jwaikqu9-geoffrey-dewittys-projects.vercel.app/app/api/register`, regData)
-                // .then(() => signIn('credentials', regData))
                 signIn('credentials', regData)
 
                 
@@ -110,7 +108,7 @@ function SignupContainer() {
 
                 if (callback?.ok && !callback?.error) {
                     toast.success('Logged in');
-                    router.push('/pages/create')
+                    router.push(`${process.env.VERCEL_URL}/pages/create`)
                 }
             })
 
@@ -121,7 +119,7 @@ function SignupContainer() {
     useEffect(() => {
         if (session?.status==='authenticated') {
             console.log('Authenticated')
-            router.push('/pages/create')
+            router.push(`${process.env.VERCEL_URL}/pages/create`)
         }
     }, [session?.status])
     useEffect(() => {
