@@ -8,7 +8,6 @@ import SignupHeader from '../../(site)/components/signupHeader';
 
 import React, { useState } from 'react';
 import { useEffect } from 'react'
-import axios from 'axios';
 
 import toast from 'react-hot-toast';
 import {signIn, useSession} from 'next-auth/react';
@@ -73,7 +72,7 @@ function SignupContainer() {
             setIsLoading(true);
             // Create model
             try {
-                const response = await fetch(`${process.env.VERCEL_URL}/app/api/register`,{
+                const response = await fetch(`${process.env.VERCEL_URL}/api/register`,{
                     method: "POST",
                     headers:{
                         "Content-Type":"application/json"
