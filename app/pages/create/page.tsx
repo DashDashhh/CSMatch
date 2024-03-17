@@ -137,6 +137,8 @@ const InternBio = () => {
     };
 
     const pushCardData = async(e: any) => {
+
+        const router = useRouter()
         e.preventDefault();
 
         console.log(bioData)
