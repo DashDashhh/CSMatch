@@ -73,7 +73,7 @@ function SignupContainer() {
             setIsLoading(true);
             // Create model
             try {
-                const res = await axios.post(`cs-match-7jwaikqu9-geoffrey-dewittys-projects.vercel.app/api/register`, regData)
+                const res = await axios.post(`cs-match-7jwaikqu9-geoffrey-dewittys-projects.vercel.app/app/api/register`, regData)
                 .then(() => signIn('credentials', regData))
                 
                 .finally(() => setIsLoading(false))
