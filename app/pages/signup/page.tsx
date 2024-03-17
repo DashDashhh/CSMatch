@@ -72,7 +72,7 @@ function SignupContainer() {
             setIsLoading(true);
             // Create model
             try {
-                const response = await fetch(`${process.env.VERCEL_URL}/api/register`,{
+                const response = await fetch(`/api/register`,{
                     method: "POST",
                     headers:{
                         "Content-Type":"application/json"
