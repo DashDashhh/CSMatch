@@ -73,7 +73,7 @@ function SignupContainer() {
             setIsLoading(true);
             // Create model
             try {
-                const response = await fetch(`cs-match-7jwaikqu9-geoffrey-dewittys-projects.vercel.app/app/api/register`,{
+                const response = await fetch(`${process.env.VERCEL_URL}/app/api/register`,{
                     method: "POST",
                     headers:{
                         "Content-Type":"application/json"
