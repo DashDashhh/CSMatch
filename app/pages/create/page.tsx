@@ -214,7 +214,7 @@ const InternBio = () => {
                 console.log('pushing to /pages/internlist')
                 toast.success('Success!')
                 router.refresh()
-                router.push('/pages/internlist')
+                router.push('/')
             })
         } catch(error) {
             console.log(error)
