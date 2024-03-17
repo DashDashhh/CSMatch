@@ -206,6 +206,7 @@ const InternBio = () => {
     }
 
     const onSubmit = async(e: any) => {
+        e.preventDefault()
         try {
             await pushBioData(e)
             await pushCardData(e)
