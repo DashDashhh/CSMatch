@@ -204,11 +204,12 @@ const InternBio = () => {
 
     const onSubmit = async(e: any) => {
         try {
-            pushBioData(e)
-            pushCardData(e)
+            await pushBioData(e)
+            await pushCardData(e)
             .then(() => {
                 console.log('pushing to /pages/internlist')
                 toast.success('Success!')
+                router.refresh()
                 router.push('/pages/internlist')
             })
         } catch(error) {
