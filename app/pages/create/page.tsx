@@ -103,7 +103,7 @@ import prisma from "@/app/libs/prismadb";
 
 const InternBio = () => {
 
-    const {push} = useRouter();
+    const router = useRouter();
 
     const [internName, setName] = useState('')
     const [grade, setGrade] = useState('')
@@ -214,13 +214,10 @@ const InternBio = () => {
             .then(() => {
                 console.log('pushing to /pages/internlist')
                 toast.success('Success!')
-                try {
-                    push('/pages/internlist')
-                } catch(error) {
-                    console.log(error)
-                }
+                router.push(`aab`)
 
             })
+
         } catch(error) {
             console.log(error)
         }
