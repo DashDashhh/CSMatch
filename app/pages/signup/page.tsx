@@ -72,7 +72,7 @@ function SignupContainer() {
             setIsLoading(true);
             try {
                 console.log(regData)
-                const response = await fetch(`@/app/api/register`,{
+                const response = await fetch(`/api/register`,{
                     method: "POST",
                     headers:{
                         "Content-Type":"application/json"
@@ -105,7 +105,7 @@ function SignupContainer() {
 
                 if (callback?.ok && !callback?.error) {
                     toast.success('Logged in');
-                    router.push(`/create`)
+                    router.push(`/pages/create`)
                 }
             })
 
@@ -116,7 +116,7 @@ function SignupContainer() {
     useEffect(() => {
         if (session?.status==='authenticated') {
             console.log('Authenticated')
-            router.push(`/create`)
+            router.push(`/pages/create`)
         }
     }, [session?.status])
     useEffect(() => {
