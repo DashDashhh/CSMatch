@@ -100,7 +100,7 @@ function SignupContainer() {
     useEffect(() => {
         if (session?.status==='authenticated') {
             console.log('Authenticated')
-            router.push('/create')
+            router.push('/pages/create')
         }
     }, [session?.status])
     useEffect(() => {
@@ -114,7 +114,7 @@ function SignupContainer() {
                 password: password
             })
             setAltLink('Or log in')
-            setExtraLink('/login')
+            setExtraLink('/pages/login')
             handleUserVisibility()
         } else if (registerStatus === 'Login') {
             console.log('Logging in')
@@ -124,7 +124,7 @@ function SignupContainer() {
                 password: password
             })
             setAltLink('Or register')
-            setExtraLink('/signup')
+            setExtraLink('/pages/signup')
             handleUserVisibility()
 
     
