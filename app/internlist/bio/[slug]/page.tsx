@@ -1,7 +1,7 @@
 
 import './internbio.css'
-import '../../../../../app/(site)/components/navbar.css'
-import '../../../../../app/(site)/components/footer.css'
+import '../../../(site)/components/navbar.css'
+import '../../../(site)/components/footer.css'
 
 import Footer from '@/app/(site)/components/footer';
 
@@ -14,7 +14,7 @@ async function getData(request: string) {
     const query = encodeURI(`?id=${request}`)
     try {
         // Make sure to use cache no store!
-        const response = await fetch(`${process.env.VERCEL_URL}/api/singleUser/slug${query}`, {cache: "no-store"});
+        const response = await fetch(`/api/singleUser/slug${query}`, {cache: "no-store"});
         const res = await response.json()
         return (res)
 
