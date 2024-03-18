@@ -3,8 +3,8 @@ import Navbar from "@/app/(site)/components/navbar";
 import Footer from "@/app/(site)/components/footer";
 
 import './home.css'
-import '../../app/(site)/components/navbar.css'
-import '../../app/(site)/components/footer.css'
+import '@/app/(site)/components/navbar.css'
+import '@/app/(site)/components/footer.css'
 
 const Home = () => {
     const astralLeft = "<"

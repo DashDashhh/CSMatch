@@ -5,11 +5,15 @@ import InternCard from "@/app/(site)/components/interncard";
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 
 
-// async function getData() {
-//     const res = await fetch("/api/cards", {cache: "no-store"});
-//     if(!res.ok) console.log('error');
-//     return res.json();
-// }
+async function getData() {
+    const res = await fetch("/api/cards", {
+        next: {
+            revalidate: 0
+        }
+    });
+    if(!res.ok) console.log('error');
+    return res.json();
+}
 
 // API GET DATA FROM MONGO
 
@@ -19,6 +23,12 @@ import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 // import { PrismaClient } from "@prisma/client";
 
 // const prisma = new PrismaClient();
+
+// export async function generateStaticParams() {
+//     const res = await fetch('/api/cards')
+//     const getRes = await res.json()
+//     return getRes
+// }
 
 // async function GET() {
 //     try {
@@ -43,9 +53,9 @@ import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 //     userId: string
 //   }
 
-const internList = async({data}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const internList = async() => {
 
-    // const data = await getData();
+    const data = await getData();
 
     return (
         <div>
@@ -68,18 +78,18 @@ const internList = async({data}: InferGetServerSidePropsType<typeof getServerSid
     );
 }
 
-export async function getServerSideProps() {
-    const res = await fetch("@/app/api/cards", {cache: "no-store"});
-    if(!res.ok) console.log('error');
-    const resJSON = await res.json();
+// async function getServerSideProps() {
+//     const res = await fetch("@/app/api/cards", {cache: "no-store"});
+//     if(!res.ok) console.log('error');
+//     const resJSON = await res.json();
 
-    return {
-        props: {
-            data: resJSON
-        }
-    }
+//     return {
+//         props: {
+//             data: resJSON
+//         }
+//     }
 
-}
+// }
 
 
 // export const getServerSideProps = (async () => {
