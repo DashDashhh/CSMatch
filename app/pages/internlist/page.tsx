@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic'
 
 
 async function getData() {
-    const res = await fetch(`/api/cards`, {
+    const res = await fetch(`${process.env.VERCEL_URL}/api/cards`, {
         next: {
             revalidate: 0
         }
