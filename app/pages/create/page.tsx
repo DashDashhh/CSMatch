@@ -14,9 +14,6 @@ import { useRouter } from 'next/navigation';
 
 import toast from 'react-hot-toast';
 
-import { redirect } from 'next/navigation'
-
-
 
 // API IMPORTS
 
@@ -214,8 +211,8 @@ const InternBio = () => {
             .then(() => {
                 console.log('pushing to /pages/internlist')
                 toast.success('Success!')
-                router.push(`aab`)
-
+                // router.push(`/pages/internlist`)
+                window.location.href=`/pages/internlist`
             })
 
         } catch(error) {
