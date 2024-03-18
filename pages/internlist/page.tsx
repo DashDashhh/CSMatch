@@ -69,7 +69,7 @@ const internList = async({data}: InferGetServerSidePropsType<typeof getServerSid
 }
 
 export async function getServerSideProps() {
-    const res = await fetch("/api/cards", {cache: "no-store"});
+    const res = await fetch("@/app/api/cards", {cache: "no-store"});
     if(!res.ok) console.log('error');
     const resJSON = await res.json();
 

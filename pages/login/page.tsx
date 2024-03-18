@@ -1,9 +1,9 @@
 'use client';
 
 import './login.css'
-import Navbar from '../../(site)/components/navbar';
+import Navbar from "@/app/(site)/components/navbar";
 
-import SignupHeader from '../../(site)/components/signupHeader';
+import SignupHeader from '@/app/(site)/components/signupHeader';
 
 import React, { useState } from 'react';
 import { useEffect } from 'react'
@@ -71,7 +71,7 @@ function SignupContainer() {
         if (registerStatus === 'Register') {
             setIsLoading(true);
       
-            axios.post('/api/register', regData)
+            axios.post('@/app/api/register', regData)
     
             .catch(() => toast.error('Something went wrong!'))
             .finally(() => setIsLoading(false))
@@ -100,7 +100,7 @@ function SignupContainer() {
     useEffect(() => {
         if (session?.status==='authenticated') {
             console.log('Authenticated')
-            router.push('/pages/create')
+            router.push('/create')
         }
     }, [session?.status])
     useEffect(() => {
@@ -114,7 +114,7 @@ function SignupContainer() {
                 password: password
             })
             setAltLink('Or log in')
-            setExtraLink('/pages/login')
+            setExtraLink('/login')
             handleUserVisibility()
         } else if (registerStatus === 'Login') {
             console.log('Logging in')
@@ -124,7 +124,7 @@ function SignupContainer() {
                 password: password
             })
             setAltLink('Or register')
-            setExtraLink('/pages/signup')
+            setExtraLink('/signup')
             handleUserVisibility()
 
     

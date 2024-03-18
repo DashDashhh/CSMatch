@@ -1,10 +1,10 @@
 'use client';
 
 import './signupStyle.css'
-import Navbar from '../../(site)/components/navbar';
+import Navbar from "@/app/(site)/components/navbar";
 
 
-import SignupHeader from '../../(site)/components/signupHeader';
+import SignupHeader from '@/app/(site)/components/signupHeader';
 
 import React, { useState } from 'react';
 import { useEffect } from 'react'
@@ -72,7 +72,7 @@ function SignupContainer() {
             setIsLoading(true);
             try {
                 console.log(regData)
-                const response = await fetch(`/api/register`,{
+                const response = await fetch(`@/app/api/register`,{
                     method: "POST",
                     headers:{
                         "Content-Type":"application/json"
@@ -105,7 +105,7 @@ function SignupContainer() {
 
                 if (callback?.ok && !callback?.error) {
                     toast.success('Logged in');
-                    router.push(`/pages/create`)
+                    router.push(`/create`)
                 }
             })
 
@@ -116,7 +116,7 @@ function SignupContainer() {
     useEffect(() => {
         if (session?.status==='authenticated') {
             console.log('Authenticated')
-            router.push(`/pages/create`)
+            router.push(`/create`)
         }
     }, [session?.status])
     useEffect(() => {

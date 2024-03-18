@@ -1,9 +1,9 @@
 'use client';
 import './users.css'
-import '../../(site)/components/navbar.css'
-import '../../(site)/components/footer.css'
+import '../../app/(site)/components/navbar.css'
+import '../../app/(site)/components/footer.css'
 
-import Footer from "../../(site)/components/footer";
+import Footer from "@/app/(site)/components/footer";
 import { signOut } from "next-auth/react";
 
 import Navbar from "@/app/(site)/components/navbar";

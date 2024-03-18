@@ -1,9 +1,10 @@
 'use client'
-import Navbar from "../../(site)/components/navbar";
-import Footer from "../../(site)/components/footer";
+import Navbar from "@/app/(site)/components/navbar";
+import Footer from "@/app/(site)/components/footer";
 
 import './home.css'
-import '../../(site)/components/navbar.css'
+import '../../app/(site)/components/navbar.css'
+import '../../app/(site)/components/footer.css'
 
 const Home = () => {
     const astralLeft = "<"
