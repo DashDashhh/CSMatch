@@ -1,7 +1,7 @@
 'use client';
 import './users.css'
-import '../../app/(site)/components/navbar.css'
-import '../../app/(site)/components/footer.css'
+import '@/app/(site)/components/navbar.css'
+import '@/app/(site)/components/footer.css'
 
 import Footer from "@/app/(site)/components/footer";
 import { signOut } from "next-auth/react";

@@ -1,4 +1,4 @@
-import Home from "../../pages/home/page"
+import Home from "@/app/pages/home/page"
 
 
 
