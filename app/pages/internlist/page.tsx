@@ -3,14 +3,13 @@ import Navbar from "@/app/(site)/components/navbar";
 import InternCard from "@/app/(site)/components/interncard";
 
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
-import { getServerSideProps } from 'next/dist/build/templates/pages';
 
 
-async function getData() {
-    const res = await fetch("/api/cards", {cache: "no-store"});
-    if(!res.ok) console.log('error');
-    return res.json();
-}
+// async function getData() {
+//     const res = await fetch("/api/cards", {cache: "no-store"});
+//     if(!res.ok) console.log('error');
+//     return res.json();
+// }
 
 // API GET DATA FROM MONGO
 
@@ -37,6 +36,13 @@ async function getData() {
 //     return res.json();
 // }
 
+// type Card = {
+//     internName: string
+//     internGrade: string
+//     internEmail: string
+//     userId: string
+//   }
+
 const internList = async({data}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
     // const data = await getData();
@@ -62,14 +68,32 @@ const internList = async({data}: InferGetServerSidePropsType<typeof getServerSid
     );
 }
 
-export async function GetServerSideProps(context: any) {
-    const data = await getData();
+export async function getServerSideProps() {
+    const res = await fetch("/api/cards", {cache: "no-store"});
+    if(!res.ok) console.log('error');
+    const resJSON = await res.json();
+
     return {
         props: {
-            results: data
+            data: resJSON
         }
     }
 
 }
+
+
+// export const getServerSideProps = (async () => {
+//     // Fetch data from external API
+//     const res = await fetch("/api/cards", {cache: "no-store"});
+//     if(!res.ok) console.log('error');
+//     const resJSON: Card = await res.json();
+//     return {
+//         props: {
+//             results: resJSON
+//         }
+//     }
+
+//   })
+
  
 export default internList;
