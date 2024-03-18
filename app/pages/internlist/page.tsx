@@ -4,9 +4,11 @@ import InternCard from "@/app/(site)/components/interncard";
 
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 
+export const dynamic = 'force-dynamic'
+
 
 async function getData() {
-    const res = await fetch("/api/cards", {
+    const res = await fetch(`${process.env.ROOT_VAR}/api/cards`, {
         next: {
             revalidate: 0
         }
@@ -17,18 +19,13 @@ async function getData() {
 
 // API GET DATA FROM MONGO
 
-// import {NextResponse} from "next/server";
+import {NextResponse} from "next/server";
 
 
-// import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
-// const prisma = new PrismaClient();
+const prisma = new PrismaClient();
 
-// export async function generateStaticParams() {
-//     const res = await fetch('/api/cards')
-//     const getRes = await res.json()
-//     return getRes
-// }
 
 // async function GET() {
 //     try {
