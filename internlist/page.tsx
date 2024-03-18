@@ -35,7 +35,7 @@ async function getData() {
 //     return res.json();
 // }
 
-const internList = async() => {
+const InternList = async() => {
 
     const data = await getData();
 
@@ -60,4 +60,4 @@ const internList = async() => {
     );
 }
  
-export default internList;
+export default InternList;
