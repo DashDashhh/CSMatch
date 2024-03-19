@@ -79,10 +79,18 @@ function SignupContainer() {
                     },
                     body:JSON.stringify(regData)
                 });
-                signIn('credentials', regData)
+                signIn('credentials', {
+                    ...regData, 
+                    redirect: false
+                })
+
+                .then(() => {
+
+                    window.location.href=`/pages/create`
+                    })
 
                 setIsLoading(false)
-                toast.success('Registering you');
+                toast.success('Registered!');
 
                 
             } catch(error: any) {
