@@ -43,7 +43,8 @@ export async function POST(request) {
           experience: body.experience,
           email: body.email,
           phoneNumber: body.phoneNumber,
-          socials: body.socials
+          socials: body.socials,
+          desc: body.desc
         }}
 
       );
