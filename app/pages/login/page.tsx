@@ -1,13 +1,13 @@
 'use client';
 
-import './login.css'
+import './signupStyle.css'
 import Navbar from "@/app/(site)/components/navbar";
+
 
 import SignupHeader from '@/app/(site)/components/signupHeader';
 
 import React, { useState } from 'react';
 import { useEffect } from 'react'
-import axios from 'axios';
 
 import toast from 'react-hot-toast';
 import {signIn, useSession} from 'next-auth/react';
@@ -66,15 +66,30 @@ function SignupContainer() {
         }
     }
 
-    const onSubmit = () => {
+    const onSubmit = async() => {
         handleUserVisibility()
         if (registerStatus === 'Register') {
             setIsLoading(true);
-      
-            axios.post('@/app/api/register', regData)
-    
-            .catch(() => toast.error('Something went wrong!'))
-            .finally(() => setIsLoading(false))
+            try {
+                console.log(regData)
+                const response = await fetch(`/api/register`,{
+                    method: "POST",
+                    headers:{
+                        "Content-Type":"application/json"
+                    },
+                    body:JSON.stringify(regData)
+                });
+                signIn('credentials', regData)
+
+                setIsLoading(false)
+                toast.success('Registering you');
+
+                
+            } catch(error: any) {
+                console.log(error.response.data)
+                toast.error(error.response.data)
+            }
+
         } else if (registerStatus ==='Login') {
             
             console.log(logData)
@@ -90,6 +105,7 @@ function SignupContainer() {
 
                 if (callback?.ok && !callback?.error) {
                     toast.success('Logged in');
+                    router.push(`/pages/create`)
                 }
             })
 
@@ -100,7 +116,7 @@ function SignupContainer() {
     useEffect(() => {
         if (session?.status==='authenticated') {
             console.log('Authenticated')
-            router.push('/pages/create')
+            router.push(`/pages/create`)
         }
     }, [session?.status])
     useEffect(() => {
