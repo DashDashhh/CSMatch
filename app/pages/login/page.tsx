@@ -1,6 +1,6 @@
 'use client';
 
-import './signupStyle.css'
+import './login.css'
 import Navbar from "@/app/(site)/components/navbar";
 
 
