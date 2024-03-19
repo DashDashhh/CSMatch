@@ -44,7 +44,7 @@ export async function POST(request) {
           email: body.email,
           phoneNumber: body.phoneNumber,
           socials: body.socials,
-          desc: body.desc
+          description: body.description
         }}
 
       );

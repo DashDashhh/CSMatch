@@ -108,7 +108,7 @@ const InternBio = () => {
     const [emailValue, setEmailValue] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
     const [socials, setSocials] = useState('')
-    const [desc, setDesc] = useState('')
+    const [description, setDesc] = useState('')
     
 
     const [bioData, setBioData] = useState({
@@ -118,7 +118,7 @@ const InternBio = () => {
         email: '',
         phoneNumber: '',
         socials: '',
-        desc: ''
+        description: ''
     })
 
 
@@ -236,11 +236,11 @@ const InternBio = () => {
             email: emailValue,
             phoneNumber: phoneNumber,
             socials: socials,
-            desc: desc
+            description: description
         })
 
 
-    }, [internName, grade, experience, emailValue, phoneNumber, socials, desc, bioData])
+    }, [internName, grade, experience, emailValue, phoneNumber, socials, description, bioData])
     
     return (
         <div>
@@ -292,7 +292,7 @@ const InternBio = () => {
 
                     <div className="input__wrapper">
                         <h1>About me</h1>
-                        <textarea name="Text1" id="userDescription" onChange={handleDescChange} value={desc}></textarea>
+                        <textarea name="Text1" id="userDescription" onChange={handleDescChange} value={description}></textarea>
                     </div>
 
                 
