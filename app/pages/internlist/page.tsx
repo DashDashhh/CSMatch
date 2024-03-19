@@ -1,7 +1,6 @@
 import './internsearch.css';
 import Navbar from "@/app/(site)/components/navbar";
 import InternCard from "@/app/(site)/components/interncard";
-import { unstable_noStore as noStore} from 'next/cache';
 export const dynamic = 'force-dynamic'
 
 
@@ -19,6 +18,7 @@ const internList = async() => {
     const res = await fetch(`${process.env.VERCEL_URL}/api/cards`, {next: {
         revalidate: 0
     }});
+    console.log(res)
     const data = await res.json()
     return (
         <div>
