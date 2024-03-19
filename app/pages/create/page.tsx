@@ -179,7 +179,7 @@ const InternBio = () => {
     }
 
     const pushBioData = async(e: any) => {
-        console.log(bioData)
+        console.log(`biodata: ${bioData}`)
         e.preventDefault();
 
         try {
