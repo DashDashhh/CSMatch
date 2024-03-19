@@ -25,15 +25,15 @@ model User {
 
 model UserBioInfo {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  internName String
-  grade String
-  experience String
+  internName String?
+  grade String?
+  experience String?
   email String @unique
-  phoneNumber String
-  socials String
+  phoneNumber String?
+  socials String?
 
   userId String @unique
-  description String
+  description String?
 
 }
 
@@ -46,6 +46,6 @@ model UserCardInfo {
 
   userId String @unique
 
-  description String
+  description String?
 }
 
