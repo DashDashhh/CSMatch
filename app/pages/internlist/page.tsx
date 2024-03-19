@@ -6,7 +6,9 @@ export const dynamic = 'force-dynamic'
 
 
 async function getData() {
-    const res = await fetch(`${process.env.VERCEL_URL}/api/cards`, {cache: 'no-store'});
+    const res = await fetch(`${process.env.VERCEL_URL}/api/cards`, {next: {
+        revalidate: 0
+    }});
     if(!res.ok) console.log('error');
     return res.json();
 }
