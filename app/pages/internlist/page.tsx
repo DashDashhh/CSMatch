@@ -1,23 +1,25 @@
 import './internsearch.css';
 import Navbar from "@/app/(site)/components/navbar";
 import InternCard from "@/app/(site)/components/interncard";
-
+import { unstable_noStore as noStore} from 'next/cache';
 export const dynamic = 'force-dynamic'
 
 
-async function getData() {
-    const res = await fetch(`${process.env.VERCEL_URL}/api/cards`, {next: {
-        revalidate: 0
-    }});
-    if(!res.ok) console.log('error');
-    return res.json();
-}
+// async function getData() {
+//     const res = await fetch(`${process.env.VERCEL_URL}/api/cards`, {next: {
+//         revalidate: 0
+//     }});
+//     if(!res.ok) console.log('error');
+//     return res.json();
+// }
 
 
 const internList = async() => {
 
-    const data = await getData();
-
+    const res = await fetch(`${process.env.VERCEL_URL}/api/cards`, {next: {
+        revalidate: 0
+    }});
+    const data = await res.json()
     return (
         <div>
             <Navbar linkView="false" buttonView="true"/>
