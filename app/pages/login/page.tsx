@@ -105,7 +105,7 @@ function SignupContainer() {
 
                 if (callback?.ok && !callback?.error) {
                     toast.success('Logged in');
-                    router.push(`/pages/create`)
+                    window.location.href=`/pages/create`
                 }
             })
 
@@ -116,7 +116,7 @@ function SignupContainer() {
     useEffect(() => {
         if (session?.status==='authenticated') {
             console.log('Authenticated')
-            router.push(`/pages/create`)
+            window.location.href=`/pages/create`
         }
     }, [session?.status])
     useEffect(() => {

@@ -211,7 +211,6 @@ const InternBio = () => {
             .then(() => {
                 console.log('pushing to /pages/internlist')
                 toast.success('Success!')
-                // router.push(`/pages/internlist`)
                 window.location.href=`/pages/internlist`
             })
 
