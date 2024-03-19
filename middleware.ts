@@ -1,13 +1,13 @@
-// import { withAuth } from "next-auth/middleware";
+import { withAuth } from "next-auth/middleware";
 
-// export default withAuth({
-//   pages: {
-//     signIn: "/pages/login",
-//   },
-// });
+export default withAuth({
+  pages: {
+    signIn: "/",
+  },
+});
 
-// export const config = { 
-//   matcher: [
-//     "/pages/create/:path*",
-//   ]
-// };
+export const config = { 
+  matcher: [
+    "/pages/create/:path*",
+  ]
+};
