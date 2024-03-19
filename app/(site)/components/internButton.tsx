@@ -1,14 +1,16 @@
-import { useRouter } from "next/navigation";
-
+'use client'
 const InternButton = (props: {userId: String}) => {
     const {userId} = props
 
     const path = `/pages/internlist/bio/${userId}`
-    const router = useRouter()
+
+    const clickHandler = () => {
+        window.location.href=`/pages/internlist/bio/${userId}`
+    }
 
 
     return (
-        <div className="interns__btn"><button><a href={path}>See More</a></button></div>
+        <div className="interns__btn"><button onClick={clickHandler}>See More</button></div>
     );
 }
  
