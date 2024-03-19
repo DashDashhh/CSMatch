@@ -108,6 +108,7 @@ const InternBio = () => {
     const [emailValue, setEmailValue] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
     const [socials, setSocials] = useState('')
+    const [desc, setDesc] = useState('')
     
 
     const [bioData, setBioData] = useState({
@@ -116,7 +117,8 @@ const InternBio = () => {
         experience: '',
         email: '',
         phoneNumber: '',
-        socials: ''
+        socials: '',
+        desc: ''
     })
 
 
@@ -138,7 +140,9 @@ const InternBio = () => {
     const handleSocialChange = (event: any) => {
         setSocials(event.target.value);
     };
-
+    const handleDescChange = (event: any) => {
+        setDesc(event.target.value);
+    }
     const pushCardData = async(e: any) => {
 
 
@@ -231,11 +235,12 @@ const InternBio = () => {
             experience: experience,
             email: emailValue,
             phoneNumber: phoneNumber,
-            socials: socials
+            socials: socials,
+            desc: desc
         })
 
 
-    }, [internName, grade, experience, emailValue, phoneNumber, socials, bioData])
+    }, [internName, grade, experience, emailValue, phoneNumber, socials, desc, bioData])
     
     return (
         <div>
@@ -287,7 +292,7 @@ const InternBio = () => {
 
                     <div className="input__wrapper">
                         <h1>About me</h1>
-                        <textarea name="Text1" id="userDescription"></textarea>
+                        <textarea name="Text1" id="userDescription" onChange={handleDescChange} value={desc}></textarea>
                     </div>
 
                 

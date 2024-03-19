@@ -72,7 +72,7 @@ const InternBio = async({ params }: any) => {
                 </div>
                 <div className="description">
                     <h1>About me</h1>
-                    <div id="description__paragraph"> DescriptionDescriptionDescriptionDescriptionDescriptionDescription</div>
+                    <div id="description__paragraph">{bio.desc}</div>
                 </div>
 
 

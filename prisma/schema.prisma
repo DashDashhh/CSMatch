@@ -33,6 +33,7 @@ model UserBioInfo {
   socials String
 
   userId String @unique
+  description String
 
 }
 
@@ -44,5 +45,7 @@ model UserCardInfo {
   email String?
 
   userId String @unique
+
+  description String
 }
 
