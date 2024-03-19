@@ -8,6 +8,6 @@ export default withAuth({
 
 export const config = { 
   matcher: [
-    `${process.env.VERCEL_URL}/pages/create/:path*`,
+    `/pages/create/:path*`,
   ]
 };
