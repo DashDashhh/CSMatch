@@ -156,7 +156,7 @@ const InternBio = () => {
         })
 
 
-    }, [internName, grade, experience, emailValue, phoneNumber, socials, description, bioData])
+    }, [])
     
     return (
         <div>

@@ -4,18 +4,11 @@ import InternCard from "@/app/(site)/components/interncard";
 export const dynamic = 'force-dynamic'
 
 
-// async function getData() {
-//     const res = await fetch(`${process.env.VERCEL_URL}/api/cards`, {next: {
-//         revalidate: 0
-//     }});
-//     if(!res.ok) console.log('error');
-//     return res.json();
-// }
 
 
 const internList = async() => {
 
-    const res = await fetch(`${process.env.VERCEL_URL}/api/cards`, {next: {
+    const res = await fetch(`${process.env.ROOT_URL}/api/cards`, {next: {
         revalidate: 0
     }});
     console.log(res)
@@ -40,33 +33,6 @@ const internList = async() => {
 
     );
 }
-
-// async function getServerSideProps() {
-//     const res = await fetch("@/app/api/cards", {cache: "no-store"});
-//     if(!res.ok) console.log('error');
-//     const resJSON = await res.json();
-
-//     return {
-//         props: {
-//             data: resJSON
-//         }
-//     }
-
-// }
-
-
-// export const getServerSideProps = (async () => {
-//     // Fetch data from external API
-//     const res = await fetch("/api/cards", {cache: "no-store"});
-//     if(!res.ok) console.log('error');
-//     const resJSON: Card = await res.json();
-//     return {
-//         props: {
-//             results: resJSON
-//         }
-//     }
-
-//   })
 
  
 export default internList;
