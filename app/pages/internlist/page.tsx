@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic'
 
 const internList = async() => {
 
-    const res = await fetch(`${process.env.ROOT_URL}/api/cards`, {next: {
+    const res = await fetch(`${process.env.VERCEL_URL}/api/cards`, {next: {
         revalidate: 0
     }});
     console.log(res)
