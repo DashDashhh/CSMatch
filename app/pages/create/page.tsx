@@ -2,6 +2,9 @@
 import './users.css'
 import '@/app/(site)/components/navbar.css'
 import '@/app/(site)/components/footer.css'
+import { AiFillEdit } from "react-icons/ai";
+import { IconContext } from "react-icons";
+
 
 import Footer from "@/app/(site)/components/footer";
 import { signOut } from "next-auth/react";
@@ -25,6 +28,8 @@ const InternBio = () => {
     const [phoneNumber, setPhoneNumber] = useState('')
     const [socials, setSocials] = useState('')
     const [description, setDesc] = useState('')
+
+    const [toggle, setToggle] = useState(false)
     
 
     const [bioData, setBioData] = useState({
@@ -142,6 +147,10 @@ const InternBio = () => {
 
     }
 
+    // const onEditHover = async(e: any) => {
+    //     e.preventDefault()
+    //     setEditIconVis(`${}`)
+    // }
 
     useEffect(() => {
         setBioData({
@@ -156,7 +165,7 @@ const InternBio = () => {
         })
 
 
-    }, [])
+    }, [internName, grade, experience, emailValue, phoneNumber, socials, description])
     
     return (
         <div>
@@ -165,7 +174,14 @@ const InternBio = () => {
             <Navbar linkView = 'false' buttonView = 'true'/>
             <div className="profile__wrapper">
                 <div className="bar1">
-                    <h1 className="profile__picture"><i className="fas fa-user"></i></h1>
+                    <div className="profile__picture" onMouseEnter={() => setToggle(!toggle)} onMouseLeave={() => setToggle(!toggle)}>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/434px-Unknown_person.jpg" alt="Profile Picture" className="image"></img>
+                        {toggle&& (
+                        <AiFillEdit className='edit__icon'/>
+                        )}
+                    </div>
+
+
                     <div className="button__wrapper">
                         <a className="button" id="confirm" onClick={onSubmit}>Confirm</a> 
                         <a className="button" id="confirm" onClick={() => signOut()}>Logout</a>

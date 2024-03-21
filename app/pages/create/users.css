@@ -37,6 +37,10 @@ Accents:
   body {
     background: #fffdf3;
   }
+
+  .invisible {
+    display: none;
+  }
   
   .profile__wrapper {
     display: flex;
@@ -63,21 +67,36 @@ Accents:
   .button__wrapper{
     display: flex;
   }
-  
-  .profile__picture {
-    font-size: 4rem;
-    background: gray;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    display: table-cell;
-  }
-  
-  .profile__picture i {
-    vertical-align: middle;
-  }
+
+.profile__picture {
+  position: relative;
+  margin-bottom: 50px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile__picture:hover {
+  cursor: pointer;
+}
+.image {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  left: 0;
+}
+
+.edit__icon { 
+  position: absolute;
+  height: 100%;
+  width: 75%;
+}
+
 
   #confirm {
+    position: relative;
     max-width: 100px;
     height: 10px;
     margin: 30px;

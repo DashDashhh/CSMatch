@@ -159,15 +159,8 @@ Accents:
     position: relative;
     transition: all 0.35s;
     outline: none;
-  }
-  
-  .main__btn a {
-    position: relative;
-    z-index: 2;
     color: white;
-    text-decoration: none;
   }
-  
   
   .main__btn:after {
     position: absolute;
@@ -176,13 +169,13 @@ Accents:
     left: 0;
     width: 0;
     height: 100%;
-    background: #140d07;
+    /* background: #140d07; */
     transition: all 0.35s;
     border-radius: 4px;
   }
   
   .main__btn:hover{
-    color: #140d07;
+    /* color: white; */
     font-size: 2rem;
     transition: all 0.3s ease;
   }
@@ -197,7 +190,7 @@ Accents:
   
   .main__img--card {
     margin: 10px;
-    height: 500px;
+    height: 100%;
     width: 90%;
     border-radius: 4px;
     border: solid #140d07;
