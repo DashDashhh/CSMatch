@@ -16,6 +16,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 import toast from 'react-hot-toast';
+import { UploadButton } from '@/utils/uploadthing';
 
 const InternBio = () => {
 
@@ -229,6 +230,8 @@ const InternBio = () => {
 
                 
                 </div>
+
+                <UploadButton endpoint="imageUploader"/>
 
 
             </div>
