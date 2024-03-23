@@ -98,33 +98,13 @@ function SignupContainer() {
                 toast.error(error.response.data)
             }
 
-        } else if (registerStatus ==='Login') {
-            
-            console.log(logData)
-            setIsLoading(true)
-            signIn('credentials', {
-                ...logData,
-                redirect: false
-            })
-            .then((callback) => {
-                if (callback?.error) {
-                    toast.error('Invalid credentials');
-                }
-
-                if (callback?.ok && !callback?.error) {
-                    toast.success('Logged in');
-                    window.location.href=`/pages/create`
-                }
-            })
-
-            .finally(() => setIsLoading(false));
         }
 
     }
     useEffect(() => {
         if (session?.status==='authenticated') {
             console.log('Authenticated')
-            window.location.href=`/pages/create`
+            window.location.href=`/pages/myprofile`
         }
     }, [session?.status])
     useEffect(() => {
