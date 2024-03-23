@@ -37,10 +37,6 @@ Accents:
   body {
     background: #fffdf3;
   }
-
-  .invisible {
-    display: none;
-  }
   
   .profile__wrapper {
     display: flex;
@@ -49,7 +45,6 @@ Accents:
     text-align: center;
     align-items: center;
     flex-direction: column;
-    padding-bottom: 20px;
   
   }
   
@@ -63,57 +58,29 @@ Accents:
     width: 100%;
     border-radius: 20px;
   }
-
-  .button__wrapper{
-    display: flex;
+  
+  .profile__picture {
+    font-size: 4rem;
+    background: gray;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: table-cell;
   }
-
-.profile__picture {
-  position: relative;
-  margin-bottom: 50px;
-  width: 100px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-}
-
-.profile__picture:hover {
-  cursor: pointer;
-}
-.image {
-  border-radius: 50%;
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-  left: 0;
-}
-
-.edit__icon {
-  display: flex;
-  width: 100%;
-  position: absolute;
-  height: 100%;
-  justify-content: center;
-}
-
-.edit__icon *{ 
-  position: absolute;
-  height: 100%;
-  width: 50%;
-}
-
-
-  #confirm {
-    position: relative;
+  
+  .profile__picture i {
+    vertical-align: middle;
+  }
+  
+  #edit {
     max-width: 100px;
     height: 10px;
-    margin: 30px;
+    margin-top: 30px;
     padding: 30px;
   }
-
-  #confirm:hover {
+  
+  #edit:hover {
     font-size: 1.3rem;
-    cursor: pointer;
   }
   
   
@@ -147,8 +114,6 @@ Accents:
     
   
   }
-
-
   
   .basic__information li {
     width: 100%;
@@ -156,8 +121,10 @@ Accents:
     padding: 10px;
   
     font-size: 1.3rem;
+    
     display: flex;
     justify-content: center;
+  
   }
   
   .contact__information {
@@ -180,25 +147,11 @@ Accents:
     display: flex;
     justify-content: center;
   }
-
-  .userInput {
-    border: 2px solid black;
-    margin-left: 5px;
-  }
-
-  #userDescription {
-    border: 2px solid black;
-    margin-left: 5px;
-    height: 90%;
-    width: 100%;
-  }
-
-  .description__wrapper {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  
+  
+  .description {
     margin: 40px 0 20px 0;
-    width: 100%;
+    width: 75%;
     max-width: 700px;
     height: 100%;
     max-height: 400px;
@@ -206,43 +159,15 @@ Accents:
     border-radius: 20px;
     background: #fff;
     box-shadow: 0 0 2px 2px #140d07;
+    word-break: break-all;
     padding: 20px;
-
-    justify-content: center;
   }
-
-
-
-#userDescription {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  max-width: 650px;
-  resize: none;
-
-}
-
-  .file__upload {
-    display: flex;
-    position: relative;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .upload__button {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    border: 2px solid black;
-    border-radius: 20px;
-    background: #fff;
-    box-shadow: 0 0 2px 2px #140d07;
+  
+  .description__paragraph {
     width: 100%;
     max-width: 700px;
-  }
-
-  .upload__button h1{
-    padding: 20px;
+    height: 100%;
+  
   }
   
   

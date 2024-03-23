@@ -3,8 +3,7 @@ import './users.css'
 import '@/app/(site)/components/navbar.css'
 import '@/app/(site)/components/footer.css'
 import { AiFillEdit } from "react-icons/ai";
-import { IconContext } from "react-icons";
-
+import Image from 'next/image';
 
 import Footer from "@/app/(site)/components/footer";
 import { signOut } from "next-auth/react";
@@ -17,6 +16,7 @@ import { useRouter } from 'next/navigation';
 
 import toast from 'react-hot-toast';
 import { UploadButton } from '@/utils/uploadthing';
+// import sdfoij from '../../../public/Unknown_person.jpg'
 
 const InternBio = () => {
 
@@ -30,7 +30,11 @@ const InternBio = () => {
     const [socials, setSocials] = useState('')
     const [description, setDesc] = useState('')
 
-    const [toggle, setToggle] = useState(false)
+    const [editToggle, setEditToggle] = useState(false)
+
+    const [editButtonToggle, setEditButtonToggle] = useState(false)
+
+    const [pfpUrl, setPfp] = useState('/Unknown_person.jpg')
     
 
     const [bioData, setBioData] = useState({
@@ -148,10 +152,6 @@ const InternBio = () => {
 
     }
 
-    // const onEditHover = async(e: any) => {
-    //     e.preventDefault()
-    //     setEditIconVis(`${}`)
-    // }
 
     useEffect(() => {
         setBioData({
@@ -175,12 +175,34 @@ const InternBio = () => {
             <Navbar linkView = 'false' buttonView = 'true'/>
             <div className="profile__wrapper">
                 <div className="bar1">
-                    <div className="profile__picture" onMouseEnter={() => setToggle(!toggle)} onMouseLeave={() => setToggle(!toggle)}>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/434px-Unknown_person.jpg" alt="Profile Picture" className="image"></img>
-                        {toggle&& (
-                        <AiFillEdit className='edit__icon'/>
+                    <div className="profile__picture" onMouseEnter={() => setEditToggle(!editToggle)} onMouseLeave={() => setEditToggle(!editToggle)} onClick={() => setEditButtonToggle(!editButtonToggle)}>
+                        <Image src={pfpUrl} alt="Profile" width="100" height="100" className="image"/>
+                        {editToggle&& (
+                            <div className='edit__icon'>
+                                <AiFillEdit/>
+                            </div>
                         )}
                     </div>
+                    {editButtonToggle && (
+                        <UploadButton endpoint="imageUploader" 
+                        onClientUploadComplete={(res) => {
+                            // Do something with the response
+                            console.log("Files: ", res);
+                            setPfp(res[0].url);
+                            setEditButtonToggle(false)
+                        }}
+                        onUploadError={(error: Error) => {
+                            // Do something with the error.
+                            alert(`ERROR! ${error.message}`);
+                        }}
+                        />
+                        
+                    )
+
+                    }
+
+
+
 
 
                     <div className="button__wrapper">
@@ -223,16 +245,32 @@ const InternBio = () => {
                 </div>
                 <div className="description__wrapper">
 
-                    <div className="input__wrapper">
-                        <h1>About me</h1>
-                        <textarea name="Text1" id="userDescription" onChange={handleDescChange} value={description}></textarea>
-                    </div>
+                    <h1>About me</h1>
+                    <textarea name="Text1" id="userDescription" onChange={handleDescChange} value={description}></textarea>
 
                 
                 </div>
 
-                <UploadButton endpoint="imageUploader"/>
 
+
+            </div>
+
+            <div className="file__upload">
+                <div className='upload__button'>
+                    <h1>My Resume</h1>
+                    <UploadButton endpoint="imageUploader" 
+                    onClientUploadComplete={(res) => {
+                        // Do something with the response
+                        console.log("Files: ", res);
+                        alert("Upload Completed");
+                    }}
+                    onUploadError={(error: Error) => {
+                        // Do something with the error.
+                        alert(`ERROR! ${error.message}`);
+                    }}
+                    />
+
+                </div>
 
             </div>
 

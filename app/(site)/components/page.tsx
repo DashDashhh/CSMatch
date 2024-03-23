@@ -1,36 +1,25 @@
+'use client'
 
-import './internbio.css'
+import './myprofile.css'
 import '@/app/(site)/components/navbar.css'
 import '@/app/(site)/components/footer.css'
+
+import { signOut } from "next-auth/react";
+
 
 import Footer from '@/app/(site)/components/footer';
 
 import Navbar from "@/app/(site)/components/navbar";
 
+import { getCurrentUser } from '@/app/libs/session';
+
+import prisma from "@/app/libs/prismadb";
 
 
 
-async function getData(request: string) {
-    const query = encodeURI(`?id=${request}`)
-    try {
-        // Make sure to use cache no store!
-        // Check this URL
-        const response = await fetch(`${process.env.ROOT_URL}/api/singleUser/slug${query}`, {cache: "no-store"});
-        const res = await response.json()
-        return (res)
 
-    } catch(error) {
-        console.log(error)
-    }
-
-}
-
-const InternBio = async({ params }: any) => {
-    const slug = params.slug
-    const bio = await getData(slug)
-
-    console.log(`bio: ${JSON.stringify(bio)}`)
-
+const MyProfile = (props: any) => {
+    const {bio} = props
     return (
         <div>
             {/* <!-- Navbar selection-->
@@ -40,31 +29,33 @@ const InternBio = async({ params }: any) => {
                 <div className="bar1">
                     <h1 className="profile__picture"><i className="fas fa-user"></i></h1>
                     <div className="button__wrapper">
+                        <a className="button" id="confirm" onClick={() => signOut()}>Logout</a>
+
                     </div>
 
                     <div className="information">
                     <ul className="basic__information">
                         <h1>Basic Information</h1>
                         <li>
-                        <p>Name: {bio.internName}</p>
+                        <p>Name: {bio?.internName}</p>
                         </li>
                         <li>
-                        <p>Grade: {bio.grade}</p>
+                        <p>Grade: {bio?.grade}</p>
                         </li>
                         <li>
-                        <p>Looking for experience in: {bio.experience}</p>
+                        <p>Looking for experience in: {bio?.experience}</p>
                         </li>
                     </ul>  
                     <ul className="contact__information">
                         <h1>Contact Information</h1>
                         <li>
-                        <p>Email: {bio.email}</p>
+                        <p>Email: {bio?.email}</p>
                         </li>
                         <li>
-                        <p>Phone Number: {bio.phoneNumber}</p>
+                        <p>Phone Number: {bio?.phoneNumber}</p>
                         </li>
                         <li>
-                        <p>Other Socials: {bio.socials}</p>
+                        <p>Other Socials: {bio?.socials}</p>
 
                         </li>
                     </ul>
@@ -72,7 +63,7 @@ const InternBio = async({ params }: any) => {
                 </div>
                 <div className="description">
                     <h1>About me</h1>
-                    <div id="description__paragraph">{bio.description}</div>
+                    <div id="description__paragraph">{bio?.description}</div>
                 </div>
 
 
@@ -89,4 +80,4 @@ const InternBio = async({ params }: any) => {
     );
 }
  
-export default InternBio;
+export default MyProfile;

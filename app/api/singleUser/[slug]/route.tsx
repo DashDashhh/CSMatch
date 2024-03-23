@@ -17,7 +17,6 @@ export async function GET(request: any) {
     try {
         const singleUser = await prisma.userBioInfo.findUnique({
             where: {
-                // returns an error but should be fine...
                 userId: id!
             }
         });

@@ -105,7 +105,7 @@ function SignupContainer() {
 
                 if (callback?.ok && !callback?.error) {
                     toast.success('Logged in');
-                    window.location.href=`/pages/create`
+                    window.location.href=`/pages/myprofile`
                 }
             })
 
@@ -116,7 +116,7 @@ function SignupContainer() {
     useEffect(() => {
         if (session?.status==='authenticated') {
             console.log('Authenticated')
-            window.location.href=`/pages/create`
+            window.location.href=`/pages/myprofile`
         }
     }, [session?.status])
     useEffect(() => {
