@@ -17,7 +17,7 @@ import MyProfile from '@/app/(site)/components/page';
 
 
 
-export async function getData() {
+const getData = async() => {
 
 
     const user = await getCurrentUser();
