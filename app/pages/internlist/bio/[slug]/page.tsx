@@ -15,7 +15,7 @@ async function getData(request: string) {
     try {
         // Make sure to use cache no store!
         // Check this URL
-        const response = await fetch(`${process.env.VERCEL_URL}/api/singleUser/slug${query}`, {cache: "no-store"});
+        const response = await fetch(`${process.env.ROOT_URL}/api/singleUser/slug${query}`, {cache: "no-store"});
         const res = await response.json()
         return (res)
 

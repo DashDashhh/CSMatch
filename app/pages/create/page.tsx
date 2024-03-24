@@ -17,10 +17,8 @@ import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { UploadButton } from '@/utils/uploadthing';
 
-import { useSession } from 'next-auth/react';
 
 const InternBio = () => {
-    const session = useSession();
 
     const router = useRouter();
 
@@ -171,13 +169,6 @@ const InternBio = () => {
 
     }, [internName, grade, experience, emailValue, phoneNumber, socials, description])
 
-    
-    useEffect(() => {
-        if (session?.status==='authenticated') {
-            console.log('Authenticated')
-            window.location.href=`/pages/login`
-        }
-    }, [session?.status])
 
     
     return (
