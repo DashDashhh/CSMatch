@@ -9,7 +9,6 @@ export default withAuth({
 
 export const config = { 
   matcher: [
-    "/pages/create",
-    "/pages/myprofile",
+    "/pages/create"
   ]
 };

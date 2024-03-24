@@ -37,6 +37,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## UPDATES
 
+## LOCALLY FUNCTIONAL
+
 what works
 
 register
@@ -47,6 +49,19 @@ loading intern data
 locally:
 all logouts
 all automatic redirects
+
+## LOCALLY DYSFUNCTIONAL
+
+none
+
+## DEPLOY FUNCTIONAL
+
+displaying intern data
+
+## DEPLOY DYSFUNCTIONAL
+
+logging in(authenticating)
+registering redirect
 
 middleware causes issues when exported
 
