@@ -12,15 +12,12 @@ import Navbar from "@/app/(site)/components/navbar";
 
 import { useState, useEffect } from 'react';
 
-import { useRouter } from 'next/navigation';
-
 import toast from 'react-hot-toast';
 import { UploadButton } from '@/utils/uploadthing';
-// import sdfoij from '../../../public/Unknown_person.jpg'
+
 
 const InternBio = () => {
 
-    const router = useRouter();
 
     const [internName, setName] = useState('')
     const [grade, setGrade] = useState('')
@@ -44,7 +41,7 @@ const InternBio = () => {
         email: '',
         phoneNumber: '',
         socials: '',
-        description: ''
+        description: '',
     })
 
 
@@ -96,7 +93,6 @@ const InternBio = () => {
                 console.log("PushCardData: Error")
                 return (false)
             }
-            // POST(bioData)
         } catch(err) {
             console.log(err)
             return (false)
@@ -154,6 +150,7 @@ const InternBio = () => {
 
 
     useEffect(() => {
+        
         setBioData({
             ...bioData,
             internName: internName,
@@ -162,11 +159,13 @@ const InternBio = () => {
             email: emailValue,
             phoneNumber: phoneNumber,
             socials: socials,
-            description: description
+            description: description,
         })
 
 
     }, [internName, grade, experience, emailValue, phoneNumber, socials, description])
+
+
     
     return (
         <div>
