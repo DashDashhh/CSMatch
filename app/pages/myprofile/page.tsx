@@ -13,7 +13,9 @@ import prisma from "@/app/libs/prismadb";
 import MyProfile from '@/app/(site)/components/page';
 
 
+
 const getData = async() => {
+
 
   const user = await getCurrentUser();
   const e = user!.email
