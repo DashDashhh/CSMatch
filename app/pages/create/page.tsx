@@ -16,9 +16,11 @@ import { useRouter } from 'next/navigation';
 
 import toast from 'react-hot-toast';
 import { UploadButton } from '@/utils/uploadthing';
-// import sdfoij from '../../../public/Unknown_person.jpg'
+
+import { useSession } from 'next-auth/react';
 
 const InternBio = () => {
+    const session = useSession();
 
     const router = useRouter();
 
@@ -154,6 +156,7 @@ const InternBio = () => {
 
 
     useEffect(() => {
+        
         setBioData({
             ...bioData,
             internName: internName,
@@ -167,6 +170,15 @@ const InternBio = () => {
 
 
     }, [internName, grade, experience, emailValue, phoneNumber, socials, description])
+
+    
+    useEffect(() => {
+        if (session?.status==='authenticated') {
+            console.log('Authenticated')
+            window.location.href=`/pages/myprofile`
+        }
+    }, [session?.status])
+
     
     return (
         <div>
