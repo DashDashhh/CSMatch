@@ -111,6 +111,7 @@ function SignupContainer() {
 
         if (session?.status==='authenticated') {
             console.log('Authenticated')
+            alert('auth')
             window.location.href=`/pages/myprofile`
         }
     }, [])

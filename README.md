@@ -44,11 +44,9 @@ login
 image upload
 loading intern data
 
+locally:
+all logouts
+all automatic redirects
 
-what needs to work
-logout on myprofile --> returns an error on logout because cannot find user email upon reload
- - must implement middleware
-
-logout on create(no redirect)
- - does log user out but doesn't redirect user
+middleware may be causing issues when exported
 
