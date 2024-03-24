@@ -117,11 +117,11 @@ function SignupContainer() {
 
         console.log(session?.status)
 
-        if (session?.status==='authenticated') {
-            console.log('Authenticated')
-            window.location.href=`/pages/myprofile`
-        }
-    }, [])
+        // if (session?.status==='authenticated') {
+        //     console.log('Authenticated')
+        //     window.location.href=`/pages/myprofile`
+        // }
+    }, [session?.status])
     useEffect(() => {
 
         if (registerStatus === 'Register') {
