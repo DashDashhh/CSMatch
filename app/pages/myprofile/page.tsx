@@ -11,11 +11,14 @@ import { getCurrentUser } from '@/app/libs/session';
 import prisma from "@/app/libs/prismadb";
 
 import MyProfile from '@/app/(site)/components/page';
+import { useRouter } from 'next/navigation'
 
 
 
 const getData = async() => {
+  const router = useRouter()
 
+  router.refresh()
 
   const user = await getCurrentUser();
   const e = user!.email
@@ -36,7 +39,7 @@ const getData = async() => {
 }
 const MyBio = async() => {
 
-  
+
   let data = await getData()
 
 
