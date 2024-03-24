@@ -175,7 +175,7 @@ const InternBio = () => {
     useEffect(() => {
         if (session?.status==='authenticated') {
             console.log('Authenticated')
-            window.location.href=`/pages/myprofile`
+            window.location.href=`/pages/login`
         }
     }, [session?.status])
 
