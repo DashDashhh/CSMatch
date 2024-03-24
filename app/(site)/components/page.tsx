@@ -15,10 +15,23 @@ import { getCurrentUser } from '@/app/libs/session';
 
 import prisma from "@/app/libs/prismadb";
 
+import { useSession } from 'next-auth/react';
+
+import { useEffect } from 'react';
 
 
 
 const MyProfile = (props: any) => {
+
+    const session= useSession()
+
+    useEffect(() => {
+        if (session?.status==='authenticated') {
+            console.log('Authenticated')
+            window.location.href=`/pages/login`
+        }
+    }, [session?.status])
+
     const {bio} = props
     return (
         <div>
