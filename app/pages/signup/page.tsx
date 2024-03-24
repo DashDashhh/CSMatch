@@ -15,6 +15,7 @@ import {signIn, useSession} from 'next-auth/react';
 
 
 
+
 function SignupContainer() {
 
     const session = useSession();
@@ -85,6 +86,9 @@ function SignupContainer() {
 
 
                 .then(() => {
+                    alert(session?.status)
+
+                    console.log('Redirecting to /pages/create')
 
                     console.log('Redirecting to /pages/create')
 

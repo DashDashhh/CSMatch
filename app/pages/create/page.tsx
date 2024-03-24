@@ -15,12 +15,9 @@ import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { UploadButton } from '@/utils/uploadthing';
 
-import { useSession } from 'next-auth/react';
-
 
 const InternBio = () => {
 
-    const session = useSession();
 
     const [internName, setName] = useState('')
     const [grade, setGrade] = useState('')

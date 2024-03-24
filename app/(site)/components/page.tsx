@@ -24,6 +24,8 @@ import { useSession } from 'next-auth/react';
 
 const MyProfile = (props: any) => {
 
+
+
     const {bio} = props
     return (
         <div>
