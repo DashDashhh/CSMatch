@@ -44,7 +44,8 @@ export async function POST(request) {
           email: body.email,
           phoneNumber: body.phoneNumber,
           socials: body.socials,
-          description: body.description
+          description: body.description,
+          pfpUrl: body.pfpUrl
         }}
 
       );

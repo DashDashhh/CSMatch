@@ -18,7 +18,6 @@ import { useRouter } from 'next/navigation';
 function SignupContainer() {
 
     const session = useSession();
-    const router = useRouter();
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -105,7 +104,8 @@ function SignupContainer() {
 
                 if (callback?.ok && !callback?.error) {
                     toast.success('Logged in');
-                    window.location.href=`/pages/create`
+                    console.log(session?.status)
+                    window.location.href=`/pages/myprofile`
                 }
             })
 
@@ -114,9 +114,12 @@ function SignupContainer() {
 
     }
     useEffect(() => {
+
+        console.log(session?.status)
+
         if (session?.status==='authenticated') {
             console.log('Authenticated')
-            window.location.href=`/pages/create`
+            window.location.href=`/pages/myprofile`
         }
     }, [session?.status])
     useEffect(() => {

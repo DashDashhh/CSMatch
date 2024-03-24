@@ -2,6 +2,8 @@
 import './users.css'
 import '@/app/(site)/components/navbar.css'
 import '@/app/(site)/components/footer.css'
+import { AiFillEdit } from "react-icons/ai";
+import Image from 'next/image';
 
 import Footer from "@/app/(site)/components/footer";
 import { signOut } from "next-auth/react";
@@ -10,13 +12,12 @@ import Navbar from "@/app/(site)/components/navbar";
 
 import { useState, useEffect } from 'react';
 
-import { useRouter } from 'next/navigation';
-
 import toast from 'react-hot-toast';
+import { UploadButton } from '@/utils/uploadthing';
+
 
 const InternBio = () => {
 
-    const router = useRouter();
 
     const [internName, setName] = useState('')
     const [grade, setGrade] = useState('')
@@ -25,6 +26,12 @@ const InternBio = () => {
     const [phoneNumber, setPhoneNumber] = useState('')
     const [socials, setSocials] = useState('')
     const [description, setDesc] = useState('')
+
+    const [editToggle, setEditToggle] = useState(false)
+
+    const [editButtonToggle, setEditButtonToggle] = useState(false)
+
+    const [pfpUrl, setPfp] = useState('/Unknown_person.jpg')
     
 
     const [bioData, setBioData] = useState({
@@ -34,7 +41,7 @@ const InternBio = () => {
         email: '',
         phoneNumber: '',
         socials: '',
-        description: ''
+        description: '',
     })
 
 
@@ -86,7 +93,6 @@ const InternBio = () => {
                 console.log("PushCardData: Error")
                 return (false)
             }
-            // POST(bioData)
         } catch(err) {
             console.log(err)
             return (false)
@@ -144,6 +150,7 @@ const InternBio = () => {
 
 
     useEffect(() => {
+        
         setBioData({
             ...bioData,
             internName: internName,
@@ -152,11 +159,13 @@ const InternBio = () => {
             email: emailValue,
             phoneNumber: phoneNumber,
             socials: socials,
-            description: description
+            description: description,
         })
 
 
-    }, [internName, grade, experience, emailValue, phoneNumber, socials, description, bioData])
+    }, [internName, grade, experience, emailValue, phoneNumber, socials, description])
+
+
     
     return (
         <div>
@@ -165,7 +174,36 @@ const InternBio = () => {
             <Navbar linkView = 'false' buttonView = 'true'/>
             <div className="profile__wrapper">
                 <div className="bar1">
-                    <h1 className="profile__picture"><i className="fas fa-user"></i></h1>
+                    <div className="profile__picture" onMouseEnter={() => setEditToggle(!editToggle)} onMouseLeave={() => setEditToggle(!editToggle)} onClick={() => setEditButtonToggle(!editButtonToggle)}>
+                        <Image src={pfpUrl} alt="Profile" width="100" height="100" className="image"/>
+                        {editToggle&& (
+                            <div className='edit__icon'>
+                                <AiFillEdit/>
+                            </div>
+                        )}
+                    </div>
+                    {editButtonToggle && (
+                        <UploadButton endpoint="imageUploader" 
+                        onClientUploadComplete={(res) => {
+                            // Do something with the response
+                            console.log("Files: ", res);
+                            setPfp(res[0].url);
+                            setEditButtonToggle(false)
+                        }}
+                        onUploadError={(error: Error) => {
+                            // Do something with the error.
+                            alert(`ERROR! ${error.message}`);
+                        }}
+                        />
+                        
+                    )
+
+                    }
+
+
+
+
+
                     <div className="button__wrapper">
                         <a className="button" id="confirm" onClick={onSubmit}>Confirm</a> 
                         <a className="button" id="confirm" onClick={() => signOut()}>Logout</a>
@@ -206,14 +244,32 @@ const InternBio = () => {
                 </div>
                 <div className="description__wrapper">
 
-                    <div className="input__wrapper">
-                        <h1>About me</h1>
-                        <textarea name="Text1" id="userDescription" onChange={handleDescChange} value={description}></textarea>
-                    </div>
+                    <h1>About me</h1>
+                    <textarea name="Text1" id="userDescription" onChange={handleDescChange} value={description}></textarea>
 
                 
                 </div>
 
+
+
+            </div>
+
+            <div className="file__upload">
+                <div className='upload__button'>
+                    <h1>My Resume</h1>
+                    <UploadButton endpoint="imageUploader" 
+                    onClientUploadComplete={(res) => {
+                        // Do something with the response
+                        console.log("Files: ", res);
+                        alert("Upload Completed");
+                    }}
+                    onUploadError={(error: Error) => {
+                        // Do something with the error.
+                        alert(`ERROR! ${error.message}`);
+                    }}
+                    />
+
+                </div>
 
             </div>
 

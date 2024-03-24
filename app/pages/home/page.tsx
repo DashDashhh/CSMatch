@@ -6,9 +6,16 @@ import './home.css'
 import '@/app/(site)/components/navbar.css'
 import '@/app/(site)/components/footer.css'
 
+import {useRouter} from "next/navigation";
+
 const Home = () => {
+    const router = useRouter();
     const astralLeft = "<"
     const astralRight = ">"
+
+    // const toList = (loc) => {
+    //     window.location.href=`/pages/${loc}`
+    // }
     return (
         <div>
         <Navbar linkView = 'true' buttonView = 'true'/>
@@ -16,7 +23,7 @@ const Home = () => {
             <div className="hero__container">
                 <h1 className="hero__heading">{astralLeft}CS<span>Match</span>/{astralRight}</h1>
                 <p className="hero__description">Connecting Future Computer Scientists with Employers!</p>
-                <button className="main__btn"><a href="/pages/signup">Sign Up</a></button>
+                <button className="main__btn" onClick={() => window.location.href='/pages/signup'}>Sign Up!</button>
             </div>
         </div>
 
@@ -24,13 +31,14 @@ const Home = () => {
         <div className="main" id="about">
             <div className="main__container">
                 <div className="main__img--container">
-                    <div className="main__img--card"><i className="fas fa-layer-group"></i></div>
+                    {/* <div className="main__img--card"><i className="fas fa-layer-group"></i></div> */}
+                    <img className="main__img--card" src="https://www.shutterstock.com/image-photo/learning-hispanic-computer-science-student-600nw-1748265719.jpg" alt="image"></img>
                 </div>
                 <div className="main__content">
                     <h1>What do we do?</h1>
                     <h2>Connect students with employers!</h2>
                     <p>Students in DCPS currently have very limited options regarding computer science classes that they can enroll in. Our website helps target this issue, giving students an opportunity to advertise themselves as potential interns.</p>
-                    <button className="main__btn"><a href="pages/internlist">See Our Interns</a></button>
+                    <button className="main__btn" onClick={() => window.location.href='/pages/internlist'}>See Our Interns</button>
                 </div>
             </div>
         </div>
@@ -53,10 +61,11 @@ const Home = () => {
                     <h1>Get Involved</h1>
                     <h2>Sign Up Today!</h2>
                     <p>You can create a listing for yourself as an intern today. Allow businesses to contact you through this website and you&aposll be on your way to a career in computer science!</p>
-                    <button className="main__btn"><a href="/pages/signup">Sign Up</a></button>
+                    <button className="main__btn" onClick={() => window.location.href='/pages/signup'}>Sign Up</button>
                 </div>
                 <div className="main__img--container">
-                    <div className="main__img--card"><i className="fas fa-users"></i></div>
+                    <img className="main__img--card" src="https://st.depositphotos.com/1075946/1393/i/450/depositphotos_13933050-stock-photo-students-with-teacher-in-front.jpg" alt="image"></img>
+
                 </div>
                 
             </div>
