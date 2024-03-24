@@ -93,7 +93,6 @@ const InternBio = () => {
                 console.log("PushCardData: Error")
                 return (false)
             }
-            // POST(bioData)
         } catch(err) {
             console.log(err)
             return (false)
