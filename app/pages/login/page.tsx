@@ -114,6 +114,7 @@ function SignupContainer() {
 
     }
     useEffect(() => {
+
         if (session?.status==='authenticated') {
             console.log('Authenticated')
             window.location.href=`/pages/myprofile`

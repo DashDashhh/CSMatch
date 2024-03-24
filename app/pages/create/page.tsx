@@ -12,15 +12,15 @@ import Navbar from "@/app/(site)/components/navbar";
 
 import { useState, useEffect } from 'react';
 
-import { useRouter } from 'next/navigation';
-
 import toast from 'react-hot-toast';
 import { UploadButton } from '@/utils/uploadthing';
-// import sdfoij from '../../../public/Unknown_person.jpg'
+
+import { useSession } from 'next-auth/react';
+
 
 const InternBio = () => {
 
-    const router = useRouter();
+    const session = useSession();
 
     const [internName, setName] = useState('')
     const [grade, setGrade] = useState('')
@@ -154,6 +154,7 @@ const InternBio = () => {
 
 
     useEffect(() => {
+        
         setBioData({
             ...bioData,
             internName: internName,
@@ -167,6 +168,8 @@ const InternBio = () => {
 
 
     }, [internName, grade, experience, emailValue, phoneNumber, socials, description])
+
+
     
     return (
         <div>

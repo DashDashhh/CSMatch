@@ -2,9 +2,6 @@ import './internbio.css'
 import '@/app/(site)/components/navbar.css'
 import '@/app/(site)/components/footer.css'
 
-import { signOut } from "next-auth/react";
-
-
 import Footer from '@/app/(site)/components/footer';
 
 import Navbar from "@/app/(site)/components/navbar";
@@ -16,34 +13,35 @@ import prisma from "@/app/libs/prismadb";
 import MyProfile from '@/app/(site)/components/page';
 
 
-
 const getData = async() => {
 
+  const user = await getCurrentUser();
+  const e = user!.email
 
-    const user = await getCurrentUser();
-    const e = user!.email
-    const data = await prisma.user.findUnique({
-      where: {
-          email: e!
-      }
-    });
-  
-    const profile = await prisma.userBioInfo.findUnique({
-      where: {
-        userId: data!.id
-      }
-    })
-  
-    return (profile)
-  
-  }
+  const data = await prisma.user.findUnique({
+    where: {
+        email: e!
+    }
+  });
+
+  const profile = await prisma.userBioInfo.findUnique({
+    where: {
+      userId: data!.id
+    }
+  })
+  return (profile)
+
+}
 const MyBio = async() => {
 
-    const bio = await getData()
+  
+  let data = await getData()
 
-    return (
-        <MyProfile bio={bio}/>
-    );
+
+
+  return (
+      <MyProfile bio={data}/>
+  );
 }
  
 export default MyBio;

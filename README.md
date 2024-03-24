@@ -34,3 +34,21 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## UPDATES
+
+what works
+
+register
+login
+image upload
+loading intern data
+
+
+what needs to work
+logout on myprofile --> returns an error on logout because cannot find user email upon reload
+ - must implement middleware
+
+logout on create(no redirect)
+ - does log user out but doesn't redirect user
+

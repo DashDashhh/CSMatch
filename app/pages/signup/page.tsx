@@ -12,13 +12,12 @@ import { useEffect } from 'react'
 import toast from 'react-hot-toast';
 import {signIn, useSession} from 'next-auth/react';
 
-import { useRouter } from 'next/navigation';
+
 
 
 function SignupContainer() {
 
     const session = useSession();
-    const router = useRouter();
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -84,7 +83,10 @@ function SignupContainer() {
                     redirect: false
                 })
 
+
                 .then(() => {
+
+                    console.log('Redirecting to /pages/create')
 
                     window.location.href=`/pages/create`
                     })
@@ -98,35 +100,16 @@ function SignupContainer() {
                 toast.error(error.response.data)
             }
 
-        } else if (registerStatus ==='Login') {
-            
-            console.log(logData)
-            setIsLoading(true)
-            signIn('credentials', {
-                ...logData,
-                redirect: false
-            })
-            .then((callback) => {
-                if (callback?.error) {
-                    toast.error('Invalid credentials');
-                }
-
-                if (callback?.ok && !callback?.error) {
-                    toast.success('Logged in');
-                    window.location.href=`/pages/create`
-                }
-            })
-
-            .finally(() => setIsLoading(false));
         }
 
     }
     useEffect(() => {
+
         if (session?.status==='authenticated') {
             console.log('Authenticated')
-            window.location.href=`/pages/create`
+            window.location.href=`/pages/myprofile`
         }
-    }, [session?.status])
+    }, [])
     useEffect(() => {
 
         if (registerStatus === 'Register') {
@@ -140,18 +123,6 @@ function SignupContainer() {
             setAltLink('Or log in')
             setExtraLink('/pages/login')
             handleUserVisibility()
-        } else if (registerStatus === 'Login') {
-            console.log('Logging in')
-            setLogData({
-                ...logData,
-                email: email,
-                password: password
-            })
-            setAltLink('Or register')
-            setExtraLink('/pages/signup')
-            handleUserVisibility()
-
-    
         }
 
     

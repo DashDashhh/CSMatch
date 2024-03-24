@@ -15,10 +15,15 @@ import { getCurrentUser } from '@/app/libs/session';
 
 import prisma from "@/app/libs/prismadb";
 
+import { useEffect } from 'react';
+
+import { useSession } from 'next-auth/react';
+
 
 
 
 const MyProfile = (props: any) => {
+
     const {bio} = props
     return (
         <div>
