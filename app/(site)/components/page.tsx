@@ -15,6 +15,10 @@ import { getCurrentUser } from '@/app/libs/session';
 
 import prisma from "@/app/libs/prismadb";
 
+import { useEffect } from 'react';
+
+import { useSession } from 'next-auth/react';
+
 
 
 
@@ -29,7 +33,7 @@ const MyProfile = (props: any) => {
                 <div className="bar1">
                     <h1 className="profile__picture"><i className="fas fa-user"></i></h1>
                     <div className="button__wrapper">
-                        <a className="button" id="confirm" onClick={() => signOut()}>Logout</a>
+                        <button className="button" id="confirm" onClick={() => signOut()}>Logout</button>
 
                     </div>
 

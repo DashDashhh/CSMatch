@@ -50,6 +50,7 @@ export async function POST(request) {
           phoneNumber: '',
           socials: '',
           description: '',
+          pfpUrl: '/Unknown_person.jpg',
           userId: user.id
         }
       })

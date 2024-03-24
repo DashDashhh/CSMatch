@@ -7,6 +7,7 @@ import Footer from '@/app/(site)/components/footer';
 
 import Navbar from "@/app/(site)/components/navbar";
 
+import Image from 'next/image';
 
 
 
@@ -38,7 +39,8 @@ const InternBio = async({ params }: any) => {
             <Navbar linkView = 'false' buttonView = 'true'/>
             <div className="profile__wrapper">
                 <div className="bar1">
-                    <h1 className="profile__picture"><i className="fas fa-user"></i></h1>
+                    <Image src={bio.pfpUrl} alt="Profile" width="100" height="100" className="image"/>
+
                     <div className="button__wrapper">
                     </div>
 
