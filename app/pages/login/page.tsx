@@ -105,6 +105,7 @@ function SignupContainer() {
 
                 if (callback?.ok && !callback?.error) {
                     toast.success('Logged in');
+                    console.log(session?.status)
                     window.location.href=`/pages/myprofile`
                 }
             })
