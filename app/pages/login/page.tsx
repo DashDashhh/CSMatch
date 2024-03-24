@@ -1,13 +1,13 @@
 'use client';
 
 import './login.css'
-import Navbar from "@/app/(site)/components/navbar";
+import Navbar from '../../(site)/components/navbar';
 
-
-import SignupHeader from '@/app/(site)/components/signupHeader';
+import SignupHeader from '../../(site)/components/signupHeader';
 
 import React, { useState } from 'react';
 import { useEffect } from 'react'
+import axios from 'axios';
 
 import toast from 'react-hot-toast';
 import {signIn, useSession} from 'next-auth/react';
@@ -66,30 +66,15 @@ function SignupContainer() {
         }
     }
 
-    const onSubmit = async() => {
+    const onSubmit = () => {
         handleUserVisibility()
         if (registerStatus === 'Register') {
             setIsLoading(true);
-            try {
-                console.log(regData)
-                const response = await fetch(`/api/register`,{
-                    method: "POST",
-                    headers:{
-                        "Content-Type":"application/json"
-                    },
-                    body:JSON.stringify(regData)
-                });
-                signIn('credentials', regData)
-
-                setIsLoading(false)
-                toast.success('Registering you');
-
-                
-            } catch(error: any) {
-                console.log(error.response.data)
-                toast.error(error.response.data)
-            }
-
+      
+            axios.post('/api/register', regData)
+    
+            .catch(() => toast.error('Something went wrong!'))
+            .finally(() => setIsLoading(false))
         } else if (registerStatus ==='Login') {
             
             console.log(logData)
@@ -105,8 +90,6 @@ function SignupContainer() {
 
                 if (callback?.ok && !callback?.error) {
                     toast.success('Logged in');
-                    console.log(session?.status)
-                    window.location.href=`/pages/myprofile`
                 }
             })
 
@@ -115,12 +98,9 @@ function SignupContainer() {
 
     }
     useEffect(() => {
-
-        console.log(session?.status)
-
         if (session?.status==='authenticated') {
             console.log('Authenticated')
-            window.location.href=`/pages/myprofile`
+            router.push('/pages/create')
         }
     }, [session?.status])
     useEffect(() => {

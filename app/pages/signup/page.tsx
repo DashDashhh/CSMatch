@@ -1,10 +1,10 @@
 'use client';
 
 import './signupStyle.css'
-import Navbar from "@/app/(site)/components/navbar";
+import Navbar from '../../(site)/components/navbar';
 
 
-import SignupHeader from '@/app/(site)/components/signupHeader';
+import SignupHeader from '../../(site)/components/signupHeader';
 
 import React, { useState } from 'react';
 import { useEffect } from 'react'
@@ -12,13 +12,13 @@ import { useEffect } from 'react'
 import toast from 'react-hot-toast';
 import {signIn, useSession} from 'next-auth/react';
 
-
-
+import { useRouter } from 'next/navigation';
 
 
 function SignupContainer() {
 
     const session = useSession();
+    const router = useRouter();
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -79,21 +79,10 @@ function SignupContainer() {
                     },
                     body:JSON.stringify(regData)
                 });
-                signIn('credentials', {
-                    ...regData, 
-                    redirect: false
-                })
-
-
-                .then(() => {
-
-                    console.log('Redirecting to /pages/create')
-
-                })
+                signIn('credentials', regData)
 
                 setIsLoading(false)
-                toast.success('Registered!');
-                window.location.href=`/pages/create`
+                toast.success('Registering you');
 
                 
             } catch(error: any) {
@@ -101,14 +90,33 @@ function SignupContainer() {
                 toast.error(error.response.data)
             }
 
+        } else if (registerStatus ==='Login') {
+            
+            console.log(logData)
+            setIsLoading(true)
+            signIn('credentials', {
+                ...logData,
+                redirect: false
+            })
+            .then((callback) => {
+                if (callback?.error) {
+                    toast.error('Invalid credentials');
+                }
+
+                if (callback?.ok && !callback?.error) {
+                    toast.success('Logged in');
+                    router.push(`/pages/create`)
+                }
+            })
+
+            .finally(() => setIsLoading(false));
         }
 
     }
     useEffect(() => {
-
         if (session?.status==='authenticated') {
-            console.log('Authenticated - redirecting to profile')
-            window.location.href=`/pages/myprofile`
+            console.log('Authenticated')
+            router.push(`/pages/create`)
         }
     }, [session?.status])
     useEffect(() => {
@@ -124,6 +132,18 @@ function SignupContainer() {
             setAltLink('Or log in')
             setExtraLink('/pages/login')
             handleUserVisibility()
+        } else if (registerStatus === 'Login') {
+            console.log('Logging in')
+            setLogData({
+                ...logData,
+                email: email,
+                password: password
+            })
+            setAltLink('Or register')
+            setExtraLink('/pages/signup')
+            handleUserVisibility()
+
+    
         }
 
     

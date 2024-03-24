@@ -1,15 +1,13 @@
-import { withAuth } from "next-auth/middleware"
-
+import { withAuth } from "next-auth/middleware";
 
 export default withAuth({
-    pages: {
-      signIn: '/pages/login',
-    }
-  })
+  pages: {
+    signIn: "/pages/login",
+  },
+});
 
 export const config = { 
   matcher: [
-    "/pages/create",
-    "/pages/myprofile"
+    "/pages/create/:path*",
   ]
 };
