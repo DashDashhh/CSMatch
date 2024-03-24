@@ -13,6 +13,7 @@ import prisma from "@/app/libs/prismadb";
 import MyProfile from '@/app/(site)/components/page';
 import { useRouter } from 'next/navigation'
 
+export const dynamic = 'force-dynamic'
 
 
 const getData = async() => {
@@ -36,13 +37,9 @@ const getData = async() => {
 
 }
 const MyBio = async() => {
-  const router = useRouter()
-  router.refresh()
 
 
   let data = await getData()
-
-
 
   return (
       <MyProfile bio={data}/>
