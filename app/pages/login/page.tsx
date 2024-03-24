@@ -18,7 +18,6 @@ import { useRouter } from 'next/navigation';
 function SignupContainer() {
 
     const session = useSession();
-    const router = useRouter();
 
     const [isLoading, setIsLoading] = useState(false);
 
