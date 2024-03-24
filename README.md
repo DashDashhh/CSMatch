@@ -48,5 +48,5 @@ locally:
 all logouts
 all automatic redirects
 
-middleware may be causing issues when exported
+middleware causes issues when exported
 
