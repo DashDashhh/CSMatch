@@ -89,11 +89,11 @@ function SignupContainer() {
 
                     console.log('Redirecting to /pages/create')
 
-                    window.location.href=`/pages/create`
-                    })
+                })
 
                 setIsLoading(false)
                 toast.success('Registered!');
+                window.location.href=`/pages/create`
 
                 
             } catch(error: any) {
@@ -107,10 +107,10 @@ function SignupContainer() {
     useEffect(() => {
 
         if (session?.status==='authenticated') {
-            console.log('Authenticated')
+            console.log('Authenticated - redirecting to profile')
             window.location.href=`/pages/myprofile`
         }
-    }, [])
+    }, [session?.status])
     useEffect(() => {
 
         if (registerStatus === 'Register') {
