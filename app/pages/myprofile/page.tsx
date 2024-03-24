@@ -16,9 +16,7 @@ import { useRouter } from 'next/navigation'
 
 
 const getData = async() => {
-  const router = useRouter()
 
-  router.refresh()
 
   const user = await getCurrentUser();
   const e = user!.email
@@ -38,6 +36,8 @@ const getData = async() => {
 
 }
 const MyBio = async() => {
+  const router = useRouter()
+  router.refresh()
 
 
   let data = await getData()
