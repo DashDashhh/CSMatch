@@ -15,10 +15,10 @@ import {signIn, useSession} from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 
+
 function SignupContainer() {
 
     const session = useSession();
-    const router = useRouter();
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -84,7 +84,9 @@ function SignupContainer() {
                     redirect: false
                 })
 
+
                 .then(() => {
+                    alert(session?.status)
 
                     console.log('Redirecting to /pages/create')
 
@@ -104,11 +106,12 @@ function SignupContainer() {
 
     }
     useEffect(() => {
+
         if (session?.status==='authenticated') {
             console.log('Authenticated')
             window.location.href=`/pages/myprofile`
         }
-    }, [])
+    }, [session?.status])
     useEffect(() => {
 
         if (registerStatus === 'Register') {
@@ -122,18 +125,6 @@ function SignupContainer() {
             setAltLink('Or log in')
             setExtraLink('/pages/login')
             handleUserVisibility()
-        } else if (registerStatus === 'Login') {
-            console.log('Logging in')
-            setLogData({
-                ...logData,
-                email: email,
-                password: password
-            })
-            setAltLink('Or register')
-            setExtraLink('/pages/signup')
-            handleUserVisibility()
-
-    
         }
 
     
