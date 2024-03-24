@@ -90,8 +90,6 @@ function SignupContainer() {
 
                     console.log('Redirecting to /pages/create')
 
-                    console.log('Redirecting to /pages/create')
-
                     window.location.href=`/pages/create`
                     })
 
@@ -111,10 +109,9 @@ function SignupContainer() {
 
         if (session?.status==='authenticated') {
             console.log('Authenticated')
-            alert('auth')
             window.location.href=`/pages/myprofile`
         }
-    }, [])
+    }, [session?.status])
     useEffect(() => {
 
         if (registerStatus === 'Register') {
