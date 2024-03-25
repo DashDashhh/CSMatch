@@ -21,7 +21,6 @@ import { useSession } from 'next-auth/react';
 
 import Image from 'next/image';
 
-export const dynamic = 'force-dynamic'
 
 
 
@@ -46,7 +45,7 @@ const MyProfile = (props: any) => {
             <div className="profile__wrapper">
                 <div className="bar1">
                     <div className="profile__picture">
-                            <Image src={bio.pfpUrl} alt="Profile" width="100" height="100" className="image"/>
+                            <Image src={bio?.pfpUrl} alt="Profile" width="100" height="100" className="image"/>
                         </div>
                     <div className="button__wrapper">
                         <button className="button" id="confirm" onClick={() => signOut()}>Logout</button>
