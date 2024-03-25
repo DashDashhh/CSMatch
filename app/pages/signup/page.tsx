@@ -79,10 +79,13 @@ function SignupContainer() {
                     },
                     body:JSON.stringify(regData)
                 });
-                signIn('credentials', regData)
+                await signIn('credentials', regData)
 
                 setIsLoading(false)
                 toast.success('Registering you');
+
+
+                window.location.href='/pages/create'
 
                 
             } catch(error: any) {
@@ -105,7 +108,7 @@ function SignupContainer() {
 
                 if (callback?.ok && !callback?.error) {
                     toast.success('Logged in');
-                    console.log(session?.status)
+                    alert(session?.status)
                     window.location.href=`/pages/create`
                 }
             })
@@ -122,7 +125,8 @@ function SignupContainer() {
             console.log('Authenticated - redirecting to profile')
             window.location.href=`/pages/myprofile`
         }
-    }, [session?.status])
+    }, []) 
+    // Run once on startup ^^
     useEffect(() => {
 
         if (registerStatus === 'Register') {

@@ -23,6 +23,15 @@ import { useSession } from 'next-auth/react';
 
 
 const MyProfile = (props: any) => {
+
+    // const session = useSession()
+
+    // useEffect(() => {
+    //     if (session?.status==='unauthenticated') {
+    //         console.log('no session')
+    //         window.location.href="/pages/login"
+    //     }
+    // }, [session?.status])
     const {bio} = props
     return (
         <div>

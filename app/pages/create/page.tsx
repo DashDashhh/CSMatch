@@ -15,8 +15,13 @@ import { UploadButton } from '@/utils/uploadthing';
 
 import toast from 'react-hot-toast';
 
+// import getSession from 'next-auth/react';
+
+import {useSession} from 'next-auth/react';
+
 
 const InternBio = () => {
+    const session = useSession()
 
 
     const [internName, setName] = useState('')
@@ -157,6 +162,12 @@ const InternBio = () => {
 
 
     useEffect(() => {
+        if (session?.status==='unauthenticated') {
+            console.log('no session')
+            window.location.href="/pages/login"
+        }
+    }, [session?.status])
+    useEffect(() => {
         
         setBioData({
             ...bioData,
@@ -294,5 +305,5 @@ const InternBio = () => {
         </div>
     );
 }
- 
+
 export default InternBio;
