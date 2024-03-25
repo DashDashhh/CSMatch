@@ -12,7 +12,8 @@ import { useEffect } from 'react'
 import toast from 'react-hot-toast';
 import {signIn, useSession} from 'next-auth/react';
 
-import { useRouter } from 'next/navigation';
+
+
 
 
 function SignupContainer() {
@@ -118,8 +119,8 @@ function SignupContainer() {
         console.log(session?.status)
 
         if (session?.status==='authenticated') {
-            console.log('Authenticated')
-            window.location.href=`/pages/create`
+            console.log('Authenticated - redirecting to profile')
+            window.location.href=`/pages/myprofile`
         }
     }, [session?.status])
     useEffect(() => {
@@ -135,18 +136,6 @@ function SignupContainer() {
             setAltLink('Or log in')
             setExtraLink('/pages/login')
             handleUserVisibility()
-        } else if (registerStatus === 'Login') {
-            console.log('Logging in')
-            setLogData({
-                ...logData,
-                email: email,
-                password: password
-            })
-            setAltLink('Or register')
-            setExtraLink('/pages/signup')
-            handleUserVisibility()
-
-    
         }
 
     
