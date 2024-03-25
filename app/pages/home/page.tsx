@@ -9,9 +9,7 @@ import '@/app/(site)/components/footer.css'
 import {useRouter} from "next/navigation";
 
 const Home = () => {
-    const router = useRouter();
-    const astralLeft = "<"
-    const astralRight = ">"
+
 
     // const toList = (loc) => {
     //     window.location.href=`/pages/${loc}`
@@ -21,7 +19,7 @@ const Home = () => {
         <Navbar linkView = 'true' buttonView = 'true'/>
         <div className="hero" id="hero">
             <div className="hero__container">
-                <h1 className="hero__heading">{astralLeft}CS<span>Match</span>/{astralRight}</h1>
+                <h1 className="hero__heading">CS<span>Match</span></h1>
                 <p className="hero__description">Connecting Future Computer Scientists with Employers!</p>
                 <button className="main__btn" onClick={() => window.location.href='/pages/signup'}>Sign Up!</button>
             </div>

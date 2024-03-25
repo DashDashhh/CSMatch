@@ -4,6 +4,10 @@
     display: none;
 }
 
+.image {
+    padding: 5px;
+}
+
 .highlight {
   border-bottom: 4px solid #140d07;
   background: white;

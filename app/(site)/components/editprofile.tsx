@@ -164,9 +164,9 @@ const EditProfile = (props: any) => {
             await pushBioData(e)
             await pushCardData(e)
             .then(() => {
-                console.log('pushing to /pages/internlist')
+                console.log('pushing to /pages/myprofile')
                 toast.success('Success!')
-                window.location.href=`/pages/internlist`
+                window.location.href=`/pages/myprofile`
             })
 
         } catch(error) {

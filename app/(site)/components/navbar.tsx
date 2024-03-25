@@ -6,6 +6,7 @@ import NBLink from './navbarlink'
 import { useEffect, useState } from 'react';
 
 import { useSession } from 'next-auth/react';
+import Image from 'next/image';
 
 const Navbar = (props: {linkView: string, buttonView: string}) => {
     const session = useSession()
@@ -28,14 +29,13 @@ const Navbar = (props: {linkView: string, buttonView: string}) => {
     }, [session?.status])
 
     const {linkView, buttonView} = props
-    const astralLeft = "<"
-    const astralRight = ">"
+
     return (
 
             
         <nav className="navbar">
             <div className="navbar__container">
-                <a href="/" id="navbar__logo">{astralLeft}CSMatch/{astralRight}</a>
+                <Image src='/logo_black.png' alt="Profile" width="75" height="75" className="image"/>
                 <div className="navbar__toggle" id="mobile-menu">
                     <span className="bar"></span>
                     <span className="bar"></span>
