@@ -11,11 +11,10 @@ import { signOut } from "next-auth/react";
 import Navbar from "@/app/(site)/components/navbar";
 
 import { useState, useEffect } from 'react';
-
-import { useRouter } from 'next/navigation';
+import { UploadButton } from '@/utils/uploadthing';
 
 import toast from 'react-hot-toast';
-import { UploadButton } from '@/utils/uploadthing';
+
 
 const InternBio = () => {
 
@@ -192,6 +191,27 @@ const InternBio = () => {
                             </div>
                         )}
                     </div>
+                    {editButtonToggle && (
+                        <UploadButton endpoint="imageUploader" 
+                        onClientUploadComplete={(res) => {
+                            // Do something with the response
+                            console.log("Files: ", res);
+                            toast.success("Profile Picture Uploaded!")
+                            setPfp(res[0].url);
+                            setEditButtonToggle(false)
+                        }}
+                        onUploadError={(error: Error) => {
+                            // Do something with the error.
+                            alert(`ERROR! ${error.message}`);
+                        }}
+                        />
+                        
+                    )
+
+                    }
+
+
+
 
 
                     <div className="button__wrapper">
