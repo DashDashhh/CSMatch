@@ -18,7 +18,6 @@ import { useRouter } from 'next/navigation';
 function SignupContainer() {
 
     const session = useSession();
-    const router = useRouter();
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -79,18 +78,10 @@ function SignupContainer() {
                     },
                     body:JSON.stringify(regData)
                 });
-                signIn('credentials', {
-                    ...regData, 
-                    redirect: false
-                })
-
-                .then(() => {
-
-                    window.location.href=`/pages/create`
-                    })
+                signIn('credentials', regData)
 
                 setIsLoading(false)
-                toast.success('Registered!');
+                toast.success('Registering you');
 
                 
             } catch(error: any) {
@@ -113,6 +104,7 @@ function SignupContainer() {
 
                 if (callback?.ok && !callback?.error) {
                     toast.success('Logged in');
+                    console.log(session?.status)
                     window.location.href=`/pages/create`
                 }
             })
@@ -122,6 +114,9 @@ function SignupContainer() {
 
     }
     useEffect(() => {
+
+        console.log(session?.status)
+
         if (session?.status==='authenticated') {
             console.log('Authenticated')
             window.location.href=`/pages/create`

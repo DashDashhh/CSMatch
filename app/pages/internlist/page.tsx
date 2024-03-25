@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic'
 
 const internList = async() => {
 
-    const res = await fetch(`${process.env.VERCEL_URL}/api/cards`, {next: {
+    const res = await fetch(`${process.env.ROOT_URL}/api/cards`, {next: {
         revalidate: 0
     }});
     console.log(res)
@@ -20,7 +20,7 @@ const internList = async() => {
                 <div className='interns__wrapper'>
                     {data&& data?.map((card: any) => (
                         <div key={card?.id}>
-                            <InternCard internName = {card?.internName} internGrade={card?.grade} internEmail={card?.email} userId = {card?.userId}/>
+                            <InternCard internName = {card?.internName} internGrade={card?.grade} internEmail={card?.email} userId = {card?.userId} pfpUrl = {card?.pfpUrl}/>
 
                         </div>
                     ))}

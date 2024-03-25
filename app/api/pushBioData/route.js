@@ -11,16 +11,18 @@ export async function POST(request) {
 
   const user = await getCurrentUser();
 
+
   const id = await prisma.user.findUnique({
     where: {
       email: user.email
     }
   })
 
+  console.log(`current user: ${id}`)
+
 
   let body = await request.json();
 
-  console.log(body)
 
 
   // Replace the uri string with your connection string.
@@ -44,7 +46,9 @@ export async function POST(request) {
           email: body.email,
           phoneNumber: body.phoneNumber,
           socials: body.socials,
-          description: body.description
+          description: body.description,
+          pfpUrl: body.pfpUrl,
+          resumeUrl: body.resumeUrl
         }}
 
       );

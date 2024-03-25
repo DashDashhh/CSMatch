@@ -35,6 +35,10 @@ model UserBioInfo {
   userId String @unique
   description String?
 
+  pfpUrl String?
+
+  resumeUrl String?
+
 }
 
 model UserCardInfo {
@@ -47,5 +51,7 @@ model UserCardInfo {
   userId String @unique
 
   description String?
+
+  pfpUrl String?
 }
 

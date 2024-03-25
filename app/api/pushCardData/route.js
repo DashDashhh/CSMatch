@@ -39,7 +39,8 @@ export async function POST(request) {
         internName: body.internName,
         grade: body.grade,
         email: body.email,
-        userId: data.id
+        userId: data.id,
+        pfpUrl: body.pfpUrl
       });
 
       const userUpdate = await userData.updateOne(
@@ -58,7 +59,9 @@ export async function POST(request) {
         {$set: {
           internName: body.internName,
           grade: body.grade,
-          email: body.email
+          email: body.email,
+          pfpUrl: body.pfpUrl
+
         }}
       )
 

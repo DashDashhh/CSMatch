@@ -29,6 +29,14 @@ export const ourFileRouter = {
       // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
       return { uploadedBy: metadata.userId };
     }),
+
+      // This route takes an attached image OR video
+    pdfUpload: f(["pdf"])
+    .middleware(({ req }) => auth(req))
+    .onUploadComplete((data) => {
+      console.log("file", data) 
+    }),
+
 } satisfies FileRouter;
  
 export type OurFileRouter = typeof ourFileRouter;
