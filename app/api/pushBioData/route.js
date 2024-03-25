@@ -48,7 +48,8 @@ export async function POST(request) {
           socials: body.socials,
           description: body.description,
           pfpUrl: body.pfpUrl,
-          resumeUrl: body.resumeUrl
+          resumeUrl: body.resumeUrl,
+          resumeName: body.resumeName
         }}
 
       );

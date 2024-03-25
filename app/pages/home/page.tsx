@@ -48,7 +48,7 @@ const Home = () => {
             <div className="interns__wrapper">
                 <div className="interns__card">
                     <h2>The DC Department of Public Works</h2>
-                    <div className="interns__btn"><button>Explore</button></div>
+                    <div className="interns__btn"><button onClick={() => window.location.href='https://dpw.dc.gov/'}>Explore</button></div>
                 </div>
                 
             </div>

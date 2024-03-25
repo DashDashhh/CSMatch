@@ -71,6 +71,11 @@
     text-decoration: none;
 }
 
+.user__actions {
+    display: flex;
+    flex-direction: row;
+}
+
 .navbar__btn {
     display: flex;
     justify-content: center;

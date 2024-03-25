@@ -52,6 +52,7 @@ export async function POST(request) {
           description: '',
           pfpUrl: '/Unknown_person.jpg',
           resumeUrl: '',
+          resumeName: '',
           userId: user.id
         }
       })

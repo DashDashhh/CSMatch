@@ -1,5 +1,5 @@
-'use client';
-import './users.css'
+'use client'
+import './editprofile.css'
 import '@/app/(site)/components/navbar.css'
 import '@/app/(site)/components/footer.css'
 import { AiFillEdit } from "react-icons/ai";
@@ -20,28 +20,43 @@ import toast from 'react-hot-toast';
 import {useSession} from 'next-auth/react';
 
 
+import { getCurrentUser } from '@/app/libs/session';
 
-const InternBio = () => {
+import prisma from "@/app/libs/prismadb";
+
+import { redirect } from 'next/navigation';
+
+
+
+
+const EditProfile = (props: any) => {
+
+    const {dataset} = props
+    console.log(`dataset: ${JSON.stringify(dataset)}`)
+
+
+
+
     const session = useSession()
 
 
-    const [internName, setName] = useState('')
-    const [grade, setGrade] = useState('')
-    const [experience, setExperience] = useState('')
-    const [emailValue, setEmailValue] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState('')
-    const [socials, setSocials] = useState('')
-    const [description, setDesc] = useState('')
+    const [internName, setName] = useState(dataset.internName)
+    const [grade, setGrade] = useState(dataset.grade)
+    const [experience, setExperience] = useState(dataset.experience)
+    const [emailValue, setEmailValue] = useState(dataset.email)
+    const [phoneNumber, setPhoneNumber] = useState(dataset.phoneNumber)
+    const [socials, setSocials] = useState(dataset.socials)
+    const [description, setDesc] = useState(dataset.description)
 
     const [editToggle, setEditToggle] = useState(false)
 
     const [editButtonToggle, setEditButtonToggle] = useState(false)
 
-    const [pfpUrl, setPfp] = useState('/Unknown_person.jpg')
+    const [pfpUrl, setPfp] = useState(dataset.pfpUrl)
 
-    const [resumeUrl, setResumeUrl] = useState('')
+    const [resumeUrl, setResumeUrl] = useState(dataset.resumeUrl)
 
-    const [resumeName, setResumeName] = useState('')
+    const [resumeName, setResumeName] = useState(dataset.resumeName)
     
 
     const [bioData, setBioData] = useState({
@@ -309,4 +324,4 @@ const InternBio = () => {
     );
 }
 
-export default InternBio;
+export default EditProfile;

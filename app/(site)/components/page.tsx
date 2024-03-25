@@ -19,20 +19,22 @@ import { useEffect } from 'react';
 
 import { useSession } from 'next-auth/react';
 
-
+import Image from 'next/image';
 
 
 const MyProfile = (props: any) => {
 
-    // const session = useSession()
+    const session = useSession()
 
-    // useEffect(() => {
-    //     if (session?.status==='unauthenticated') {
-    //         console.log('no session')
-    //         window.location.href="/pages/login"
-    //     }
-    // }, [session?.status])
     const {bio} = props
+
+    useEffect(() => {
+        if (session?.status==='unauthenticated') {
+            console.log('no session')
+            window.location.href="/pages/login"
+        }
+    }, [session?.status])
+
     return (
         <div>
             {/* <!-- Navbar selection-->
@@ -40,9 +42,15 @@ const MyProfile = (props: any) => {
             <Navbar linkView = 'false' buttonView = 'true'/>
             <div className="profile__wrapper">
                 <div className="bar1">
-                    <h1 className="profile__picture"><i className="fas fa-user"></i></h1>
+                    <div className="profile__picture">
+                            <Image src={bio.pfpUrl} alt="Profile" width="100" height="100" className="image"/>
+                        </div>
                     <div className="button__wrapper">
                         <button className="button" id="confirm" onClick={() => signOut()}>Logout</button>
+                        <button className="button" id="confirm" onClick={() => window.location.href='/pages/editprofile'}>Edit</button>
+                        <button className="button" id="confirm" onClick={() => window.location.href='/pages/internlist'}>Other Interns</button>
+
+
 
                     </div>
 

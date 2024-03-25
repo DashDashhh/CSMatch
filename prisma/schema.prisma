@@ -38,6 +38,7 @@ model UserBioInfo {
   pfpUrl String?
 
   resumeUrl String?
+  resumeName String?
 
 }
 

@@ -5,30 +5,30 @@ import './navbar.css';
 import { useState } from 'react'
 import { useEffect } from 'react'
 
+import { signOut } from 'next-auth/react';
+
 
 
 const NBButton = (props: {
-    buttonText: string, buttonLink: string, visible: string
+    buttonText: string, buttonLink: string, purpose: string
 }) => {
 
-    const {buttonText, buttonLink, visible} = props
+
+    const {buttonText, buttonLink, purpose} = props
 
     const [buttonClass, changeVisibility] = useState('navbar__btn')
 
-    function checkVisibility() {
-        if (visible=='false') {
-            changeVisibility('invisible')
+
+    const checkPurpose = () => {
+        if (purpose==='logout') {
+            console.log('signing out')
+            signOut()
         }
     }
 
-    useEffect(() => {
-        checkVisibility()
-    
-      }, []); // Empty dependency array ensures that the effect runs only once on mount
-
     return (
         
-        <div className = {buttonClass}>
+        <div className = {buttonClass} onClick={() => checkPurpose()}>
             <a href={buttonLink} id="sign-up" className="button">{buttonText}</a>
         </div>
     );
