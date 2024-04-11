@@ -67,6 +67,12 @@ Accents:
     border-radius: 50%;
     display: table-cell;
   }
+
+  .image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
   
   .profile__picture i {
     vertical-align: middle;
@@ -168,6 +174,12 @@ Accents:
     max-width: 700px;
     height: 100%;
   
+  }
+
+  #resume__download {
+    background: gray;
+    border-radius: 50%;
+    width: 300px; 
   }
   
   

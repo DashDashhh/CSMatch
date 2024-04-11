@@ -40,7 +40,7 @@ const InternBio = async({ params }: any) => {
             <div className="profile__wrapper">
                 <div className="bar1">
                     <Image src={bio.pfpUrl} alt="Profile" width="100" height="100" className="image"/>
-                    <a id="description__paragraph" href={bio.resumeUrl}>Download My Resume Here!</a>
+                    <a id="resume__download" href={bio.resumeUrl}>Download My Resume Here!</a>
 
                     <div className="button__wrapper">
                     </div>
