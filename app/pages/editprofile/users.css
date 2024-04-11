@@ -68,25 +68,15 @@ Accents:
     display: flex;
   }
 
-.profile__picture {
-  position: relative;
-  margin-bottom: 50px;
-  width: 100px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-}
-
-.profile__picture:hover {
-  cursor: pointer;
-}
-.image {
-  border-radius: 50%;
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-  left: 0;
-}
+  .profile__picture {
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding-bottom: 5px;
+  
+  }
+  
 
 .edit__icon {
   display: flex;

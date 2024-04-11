@@ -213,7 +213,7 @@ const EditProfile = (props: any) => {
             <div className="profile__wrapper">
                 <div className="bar1">
                     <div className="profile__picture" onMouseEnter={() => setEditToggle(!editToggle)} onMouseLeave={() => setEditToggle(!editToggle)} onClick={() => setEditButtonToggle(!editButtonToggle)}>
-                        <Image src={pfpUrl} alt="Profile" width="100" height="100" className="image"/>
+                        <Image src={pfpUrl} alt="Profile" width="100" height="100" className="profile__picture"/>
                         {editToggle&& (
                             <div className='edit__icon'>
                                 <AiFillEdit/>
