@@ -39,7 +39,7 @@ const InternBio = async({ params }: any) => {
             <Navbar linkView = 'false' buttonView = 'true'/>
             <div className="profile__wrapper">
                 <div className="bar1">
-                    <Image src={bio.pfpUrl} alt="Profile" width="100" height="100" className="image"/>
+                    <Image src={bio.pfpUrl} alt="Profile" width="100" height="100" className="profile__picture"/>
                     <a id="resume__download" href={bio.resumeUrl}>Download My Resume Here!</a>
 
                     <div className="button__wrapper">

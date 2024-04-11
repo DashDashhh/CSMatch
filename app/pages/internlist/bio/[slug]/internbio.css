@@ -59,10 +59,10 @@ Accents:
     border-radius: 20px;
   }
   
-  .image {
+  .profile__picture {
     object-fit: cover;
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
   
   }
