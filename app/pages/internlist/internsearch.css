@@ -64,8 +64,8 @@
 
 .profile__picture {
   background: white;
-  max-width: 200px;
-  height: 200px;
+  height: 100%;
+  width: 100%;
   border-radius: 100px;
   display: flex;
   flex-direction: column;
