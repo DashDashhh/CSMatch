@@ -11,9 +11,7 @@ import Footer from '@/app/(site)/components/footer';
 
 import Navbar from "@/app/(site)/components/navbar";
 
-import { getCurrentUser } from '@/app/libs/session';
 
-import prisma from "@/app/libs/prismadb";
 
 import { useEffect } from 'react';
 
