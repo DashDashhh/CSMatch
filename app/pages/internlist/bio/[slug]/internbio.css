@@ -60,14 +60,12 @@ Accents:
   }
   
   .profile__picture {
-    font-size: 4rem;
-    background: gray;
-    width: 100px;
-    height: 100px;
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    display: table-cell;
+  
   }
-
   .image {
     width: 100px;
     height: 100px;
