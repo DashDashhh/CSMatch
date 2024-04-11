@@ -10,7 +10,10 @@ const InternCard = (props: {internName: String, internGrade: String, internEmail
 
 
         <div className="interns__card">
-            <Image src={pfpUrl} alt="Profile" width="100" height="100" className="profile__picture"/>
+            <div className="profile__picture">
+                <Image src={pfpUrl} alt="Profile" width="100" height="100"/>
+
+            </div>
             <p>Name: {internName}</p>
             <p>Grade: {internGrade}</p>
             <p>Email: {internEmail}</p>
