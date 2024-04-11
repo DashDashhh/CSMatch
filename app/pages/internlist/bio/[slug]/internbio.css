@@ -59,23 +59,23 @@ Accents:
     border-radius: 20px;
   }
   
-  .profile__picture {
+  .image {
     object-fit: cover;
     width: 200px;
     height: 200px;
     border-radius: 50%;
   
   }
-  .image {
+  /* .image {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-  }
+  } */
   
-  .profile__picture i {
+  /* .profile__picture i {
     vertical-align: middle;
   }
-  
+   */
   #edit {
     max-width: 100px;
     height: 10px;
