@@ -65,16 +65,19 @@
 .profile__picture {
   height: 200px;
   width: 200px;
-  border-radius: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 50%;
   margin: 20px 0;
 }
 
 .pic {
-  width: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
 }
 
 .profile__picture i {
