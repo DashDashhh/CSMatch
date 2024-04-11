@@ -44,9 +44,7 @@ const MyProfile = (props: any) => {
             <Navbar linkView = 'false' buttonView = 'true'/>
             <div className="profile__wrapper">
                 <div className="bar1">
-                    <div className="profile__picture">
-                            <Image src={bio?.pfpUrl} alt="Profile" width="100" height="100" className="image"/>
-                        </div>
+                    <Image src={bio?.pfpUrl} alt="Profile" width="100" height="100" className="profile__picture"/>
                     <div className="button__wrapper">
                         <button className="button" id="confirm" onClick={() => signOut()}>Logout</button>
                         <button className="button" id="confirm" onClick={() => window.location.href='/pages/editprofile'}>Edit</button>
