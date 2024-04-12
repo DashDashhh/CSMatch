@@ -26,6 +26,10 @@ async function getData(request: string) {
 
 }
 
+const red = (link: any) => {
+    window.location.href == link
+}
+
 const InternBio = async({ params }: any) => {
     const slug = params.slug
     const bio = await getData(slug)
@@ -43,6 +47,7 @@ const InternBio = async({ params }: any) => {
                     <a id="resume__download" href={bio.resumeUrl}>Download My Resume Here!</a>
 
                     <div className="button__wrapper">
+                        <a className="button" id="confirm" onClick={red}>Download Resume</a> 
                     </div>
 
                     <div className="information">
