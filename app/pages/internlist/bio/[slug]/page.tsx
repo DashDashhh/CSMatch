@@ -48,10 +48,6 @@ const InternBio = async({ params }: any) => {
                     <Image src={bio.pfpUrl} alt="Profile" width="100" height="100" className="profile__picture"/>
                     <a id="resume__download" href={bio.resumeUrl}>Download My Resume Here!</a>
 
-                    <div className="button__wrapper">
-                        <a className="button" id="confirm" onClick={() => redirect(bio.resumeUrl)}>Download Resume</a> 
-                    </div>
-
                     <div className="information">
                     <ul className="basic__information">
                         <h1>Basic Information</h1>
