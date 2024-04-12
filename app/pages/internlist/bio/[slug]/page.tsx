@@ -47,7 +47,7 @@ const InternBio = async({ params }: any) => {
                     <a id="resume__download" href={bio.resumeUrl}>Download My Resume Here!</a>
 
                     <div className="button__wrapper">
-                        <a className="button" id="confirm" onClick={red}>Download Resume</a> 
+                        <a className="button" id="confirm" onClick={() => red(bio.resumeUrl)}>Download Resume</a> 
                     </div>
 
                     <div className="information">
