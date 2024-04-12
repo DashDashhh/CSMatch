@@ -49,7 +49,7 @@ const InternBio = async({ params }: any) => {
                     <a id="resume__download" href={bio.resumeUrl}>Download My Resume Here!</a>
 
                     <div className="button__wrapper">
-                        <a className="button" id="confirm" onClick={redirect(bio.resumeUrl)}>Download Resume</a> 
+                        <a className="button" id="confirm" onClick={() => redirect(bio.resumeUrl)}>Download Resume</a> 
                     </div>
 
                     <div className="information">
