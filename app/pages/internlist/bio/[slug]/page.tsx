@@ -9,6 +9,8 @@ import Navbar from "@/app/(site)/components/navbar";
 
 import Image from 'next/image';
 
+import { redirect } from 'next/navigation';
+
 
 
 async function getData(request: string) {
@@ -26,9 +28,9 @@ async function getData(request: string) {
 
 }
 
-const red = (link: any) => {
-    window.location.href == link
-}
+// const red = (link: any) => {
+//     redirect(link)
+// }
 
 const InternBio = async({ params }: any) => {
     const slug = params.slug
@@ -47,7 +49,7 @@ const InternBio = async({ params }: any) => {
                     <a id="resume__download" href={bio.resumeUrl}>Download My Resume Here!</a>
 
                     <div className="button__wrapper">
-                        <a className="button" id="confirm" onClick={() => red(bio.resumeUrl)}>Download Resume</a> 
+                        <a className="button" id="confirm" onClick={redirect(bio.resumeUrl)}>Download Resume</a> 
                     </div>
 
                     <div className="information">
